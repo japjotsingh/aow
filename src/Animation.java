@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 /**
  * Created by home on 5/18/17.
  */
-public class Animation {
+public class  Animation {
 
     private BufferedImage[] frames;
     private int currentFrame;
