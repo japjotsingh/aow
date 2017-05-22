@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
  */
 public class Main {
 
-    // working on bobs computer
+    //hello
 
     int w = 800;
     int h = 800;
