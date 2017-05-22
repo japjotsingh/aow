@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d2d53eb-f221-42ea-aa82-d81d8bcc5dbb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/Melee.class" afterPath="$PROJECT_DIR$/out/production/aow/Melee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Archer.java" afterPath="$PROJECT_DIR$/src/Archer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GamePanel.java" afterPath="$PROJECT_DIR$/src/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Melee.java" afterPath="$PROJECT_DIR$/src/Melee.java" />
-    </list>
+    <list default="true" id="1d2d53eb-f221-42ea-aa82-d81d8bcc5dbb" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
