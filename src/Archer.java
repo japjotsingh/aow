@@ -12,7 +12,7 @@ public class Archer extends GameObject {
 
     private Image image;
     private BufferedImage sheet;
-    private BufferedImage[] spritez = new BufferedImage[7];
+    private BufferedImage[] spritez = new BufferedImage[10];
 
     public Archer(String n, int h){
         setName(n);
@@ -34,7 +34,7 @@ public class Archer extends GameObject {
     }
 
     private void sprite(){
-        URL url = Melee.class.getResource("Images/jwalk.png");
+        URL url = Melee.class.getResource("Images/blueRunner.png");
         try {
             sheet = ImageIO.read(url);
         } catch (Exception e) {
@@ -43,24 +43,28 @@ public class Archer extends GameObject {
 
         //starting idle is 0, moving should be 1-6
 //        spritez[0] = sheet.getSubimage(1, 335, 164, 172);
-        spritez[1] = sheet.getSubimage(1, 163, 148, 160);
-        spritez[2] = sheet.getSubimage(1, 1, 150, 158);
-        spritez[3] = sheet.getSubimage(151, 163, 152, 168);
-        spritez[4] = sheet.getSubimage(305, 163, 156, 170);
-        spritez[5] = sheet.getSubimage(311, 1, 152, 160);
-        spritez[6] = sheet.getSubimage(153, 1, 156, 158);
+        spritez[0] = sheet.getSubimage(649,419,284,392);
+        spritez[1] = sheet.getSubimage(679, 823,316,378);
+        spritez[2] = sheet.getSubimage(1,1215,348,372);
+        spritez[3] = sheet.getSubimage(319,1,342,414);
+        spritez[4] = sheet.getSubimage(663,1,316,408);
+        spritez[5] = sheet.getSubimage(1,823,308,390);
+        spritez[6] = sheet.getSubimage(1,419,328,402);
+        spritez[7] = sheet.getSubimage(311,823,366,382);
+        spritez[8] = sheet.getSubimage(331,419,316,400);
+        spritez[9] = sheet.getSubimage(1,1,316,416);
     }
 
 
-    int count = 1;
+    int count = 0;
     int walking = 5;
 
     public void draw(Graphics g) {
         g.drawImage(spritez[count], walking, 655, 50, 50, null);
         count++;
-        walking += 12;
-        if(count == 7){
-            count = 1;
+        walking += 15;
+        if(count == 10){
+            count = 0;
         }
         if(walking+30 > 800){
             walking = 5;
