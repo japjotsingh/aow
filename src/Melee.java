@@ -15,10 +15,8 @@ import java.util.Timer;
 public class Melee extends GameObject {
 
     private Image image;
-    private Animation animation;
-    private BufferedImage[] idleSprite;
-    private BufferedImage[] walkingSprite;
-    private boolean facingRight;
+    private BufferedImage sheet;
+    private BufferedImage[] spritez = new BufferedImage[7];
 
 
     public Melee(String n, int h) {
@@ -27,23 +25,7 @@ public class Melee extends GameObject {
 
         //make it so that by name you can get the respective pic
         getImage();
-
-        try {
-            idleSprite = new BufferedImage[2];
-            walkingSprite = new BufferedImage[10];
-
-            idleSprite[0] = Sprite.getSprite(0, 0);
-            idleSprite[1] = Sprite.getSprite(1, 0);
-
-            for (int i = 0; i < 9; i++) {
-                walkingSprite[i] = Sprite.getSprite(i, 2);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        animation = new Animation();
-        facingRight = true;
+        sprite();
     }
 
     private void getImage() {
@@ -56,22 +38,29 @@ public class Melee extends GameObject {
         }
     }
 
-    public void update() {
-        
+    private void sprite(){
+        URL url = Melee.class.getResource("Images/jwalk.png");
+        try {
+            sheet = ImageIO.read(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        spritez[0] = sheet.getSubimage(1, 335, 164, 172);
+        spritez[1] = sheet.getSubimage(1, 163, 148, 160);
+        spritez[2] = sheet.getSubimage(1, 1, 150, 158);
+        spritez[3] = sheet.getSubimage(151, 163, 152, 168);
+        spritez[4] = sheet.getSubimage(305, 163, 156, 170);
+        spritez[5] = sheet.getSubimage(311, 1, 152, 160);
+        spritez[6] = sheet.getSubimage(153, 1, 156, 158);
     }
+
+
 
 
     public void draw(Graphics g) {
 
-        int w = 800;
-        int h = 800;
-
-        Random r = new Random();
-        int x = r.nextInt(((w - 100) - 100) + 100);
-        int y = r.nextInt(((w - 100) - 100) + 100);
-
-        g.drawImage(image, 10, 300, 100, 100, null);
-
+        g.drawImage(spritez[(int)(Math.random()*7)], 100, 500, 100, 100, null);
     }
 
 }
