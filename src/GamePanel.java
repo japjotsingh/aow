@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements MouseListener{
 //        getInfo(a);
 //        getInfo(b);
 
-        t = new Timer(10, new ActionListener() {
+        t = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();

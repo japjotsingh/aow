@@ -46,7 +46,8 @@ public class Melee extends GameObject {
             e.printStackTrace();
         }
 
-        spritez[0] = sheet.getSubimage(1, 335, 164, 172);
+        //starting idle is 0, moving should be 1-6
+//        spritez[0] = sheet.getSubimage(1, 335, 164, 172);
         spritez[1] = sheet.getSubimage(1, 163, 148, 160);
         spritez[2] = sheet.getSubimage(1, 1, 150, 158);
         spritez[3] = sheet.getSubimage(151, 163, 152, 168);
@@ -56,11 +57,19 @@ public class Melee extends GameObject {
     }
 
 
-
+    int count = 1;
+    int walking = 5;
 
     public void draw(Graphics g) {
-
-        g.drawImage(spritez[(int)(Math.random()*7)], 100, 500, 100, 100, null);
+        g.drawImage(spritez[count], walking, 655, 50, 50, null);
+        count++;
+        walking += 12;
+        if(count == 7){
+            count = 1;
+        }
+        if(walking+30 > 800){
+            walking = 5;
+        }
     }
 
 }
