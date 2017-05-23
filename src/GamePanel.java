@@ -13,6 +13,7 @@ import java.util.Random;
 public class GamePanel extends JPanel implements MouseListener{
     Image bkgd;
     Graphics g;
+    private int panelWidth;
 
     List<Melee> meleeList = new ArrayList<>();
     List<Archer> archerList = new ArrayList<>();
@@ -31,7 +32,7 @@ public class GamePanel extends JPanel implements MouseListener{
 //        getInfo(a);
 //        getInfo(b);
 
-        t = new Timer(200, new ActionListener() {
+        t = new Timer(30, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();
@@ -94,7 +95,7 @@ public class GamePanel extends JPanel implements MouseListener{
 //                int hp = -1;// base this on the t from above and
 //                int price = -1;// but based on the choices above
                 //have the right unit costs but not hp and weapon damage
-                Melee ma = new Melee("Club Man", 10);
+                Melee ma = new Melee("Club Man", 10, panelWidth);
                 ma.setPrice(15);
                 ma.setWeapon("Club", 5);
                 meleeList.add(ma);
@@ -169,16 +170,18 @@ public class GamePanel extends JPanel implements MouseListener{
 
     public void paintComponent(Graphics g) {
 
-        int w = this.getWidth();
+        panelWidth = this.getWidth();
+
+//        System.out.println(panelWidth);
 
         g.drawImage(bkgd, 0, 0, 1500, 800, null);
 
         //drawing menus
         g.fillRect(0, 0, 200, 100); // xp and gold
-        g.fillRect(w - 300, 0, 300, 100); // main menu area
-        g.fillRect(w - 200, 100, 200, 30); // evolution special
+        g.fillRect(panelWidth - 300, 0, 300, 100); // main menu area
+        g.fillRect(panelWidth - 200, 100, 200, 30); // evolution special
         g.fillRect(0, this.getHeight()-100, this.getWidth(), 100);// bottom walking platformer
-        back.setLocation(w-300, 100);
+        back.setLocation(panelWidth-300, 100);
 
         // a boolean switch for if we are in the unit menu or main menu, boolean switches with back button
 
@@ -187,15 +190,15 @@ public class GamePanel extends JPanel implements MouseListener{
             archer.setVisible(false);
             vehicle.setVisible(false);
 
-            unit.setLocation(w - 300, 30);
+            unit.setLocation(panelWidth - 300, 30);
             unit.setVisible(true);
         }
         else{
             unit.setVisible(false);
 
-            melee.setLocation(w-300, 30);
-            archer.setLocation(w-200, 30);
-            vehicle.setLocation(w-100, 30);
+            melee.setLocation(panelWidth-300, 30);
+            archer.setLocation(panelWidth-200, 30);
+            vehicle.setLocation(panelWidth-100, 30);
 
             melee.setVisible(true);
             archer.setVisible(true);
@@ -204,6 +207,7 @@ public class GamePanel extends JPanel implements MouseListener{
 
 
         for(Melee m: this.meleeList){
+            m.setPanelWidth(panelWidth);
             m.draw(g);
         }
 //

@@ -1,5 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Animation{
@@ -12,11 +13,11 @@ public class Animation{
 
     private boolean stopped;                // has animations stopped
 
-    private ArrayList<AnFrame> framesList = new ArrayList<AnFrame>();    // Arraylist of frames
+    private List<AnFrame> framesList = new ArrayList<AnFrame>();    // Arraylist of frames
 
     public Animation(BufferedImage[] frames, int frameDelay) {
         this.frameDelay = frameDelay;
-        this.stopped = true;
+        this.stopped = false;
 
         for (int i = 0; i < frames.length; i++) {
             addFrame(frames[i], frameDelay);
@@ -70,9 +71,7 @@ public class Animation{
             System.err.println("Invalid duration: " + duration);
             throw new RuntimeException("Invalid duration: " + duration);
         }
-
-        AnFrame f = new AnFrame(frame, duration);
-        framesList.add(f);
+        framesList.add(new AnFrame(frame, duration));
 
         currentFrame = 0;
     }

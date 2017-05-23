@@ -14,11 +14,24 @@ import javax.swing.Timer;
  */
 public class Melee extends GameObject {
 
-    private Image image;
-    private BufferedImage sheet;
-    private BufferedImage[] spritez = new BufferedImage[7];
-    private int frameDelay;
+    private int panelWidth;
+
+//    private Image image;
+//    private BufferedImage sheet;
+//    private BufferedImage[] spritez = new BufferedImage[7];
+    private int frameDelay = 8;
+    private boolean attackMode = false;
     Timer t;
+
+
+    private BufferedImage[] jigAttack = {Sprite.getSprite(1,1,117,132, "jigatk"),
+            Sprite.getSprite(120,1,110,112, "jigatk"),
+            Sprite.getSprite(232,1,121,123, "jigatk"),
+            Sprite.getSprite(355,1,120,123, "jigatk"),
+            Sprite.getSprite(1,135,112,125, "jigatk"),
+            Sprite.getSprite(115,135,141,128, "jigatk"),
+            Sprite.getSprite(258,135,119,127, "jigatk"),
+            Sprite.getSprite(379,135,128,123, "jigatk")};
 
     private BufferedImage[] walkingJig  = {Sprite.getSprite(1, 163, 148, 160, "jwalk"),
                                             Sprite.getSprite(1, 1, 150, 158, "jwalk"),
@@ -27,36 +40,51 @@ public class Melee extends GameObject {
                                             Sprite.getSprite(311, 1, 152, 160, "jwalk"),
                                             Sprite.getSprite(153, 1, 156, 158, "jwalk")};
 
+
     private Animation walkingJiggly = new Animation(walkingJig, frameDelay);
     private Animation animation = walkingJiggly;
 
+    private Animation attackingJiggly = new Animation(jigAttack, frameDelay);
+    private Animation attackAnimation = attackingJiggly;
+
+    public void setPanelWidth(int p){
+        panelWidth = p;
+    }
 
 
-    public Melee(String n, int h) {
+    public Melee(String n, int h, int p) {
+        panelWidth = p;
         setName(n);
         setHealth(h);
 
         //make it so that by name you can get the respective pic
-        getImage();
+//        getImage();
 //        sprite();
 
-        t = new javax.swing.Timer(200, new ActionListener() {
+        t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                animation.update();
+//                if(!attackMode) {
+//                    animation.update();
+//                }
+//                if (attackMode) {
+//                    attackAnimation.update();
+//                }
             }
         });
+
+        t.start();
     }
 
-    private void getImage() {
-        //different depending on which evolution you are on
-        URL url = Melee.class.getResource("Images/club.png");
-        try {
-            image = ImageIO.read(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void getImage() {
+//        //different depending on which evolution you are on
+//        URL url = Melee.class.getResource("Images/club.png");
+//        try {
+//            image = ImageIO.read(url);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 //    private void sprite(){
 //        URL url = Melee.class.getResource("Images/jwalk.png");
@@ -78,25 +106,22 @@ public class Melee extends GameObject {
 //    }
 
 
-    int count = 1;
-    int walking = 5;
+    int walking = 0;
 
     public void draw(Graphics g) {
-//        g.drawImage(spritez[count], walking, 655, 50, 50, null);
-//        count++;
-//        walking += 12;
-//        if(count == 7){
-//            count = 1;
-//        }
-//        if(walking+30 > 800){
-//            walking = 5;
+
+//        if(attackMode) {
+//            g.drawImage(attackAnimation.getSprite(), 10, 655, 50, 50, null);
+//            System.out.println("attk");
 //        }
 
-        g.drawImage(animation.getSprite(), walking, 655, 50,50,null);
-        walking+=12;
-        if(walking+30 > 800){
-            walking = 5;
+        g.drawImage(animation.getSprite(), walking, 655, 50, 50, null);
+        walking += 3;
+
+        if (walking + 27 > panelWidth) {
+            attackMode = true;
         }
+
     }
 
 }
