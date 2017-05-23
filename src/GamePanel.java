@@ -207,9 +207,9 @@ public class GamePanel extends JPanel implements MouseListener{
             m.draw(g);
         }
 //
-        for(Archer a: this.archerList){
-            a.draw(g);
-        }
+//        for(Archer a: this.archerList){
+//            a.draw(g);
+//        }
 //
 //        for(Vehicle v: this.vehicleList){
 //            v.draw(g);
