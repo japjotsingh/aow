@@ -67,6 +67,8 @@ public class Jigglypuff extends GameObject {
     int walking = 0;
 
     public void draw(Graphics g) {
+
+        //modify so that i tonly goes into attack mode once objects hit box collides with another object
         if(walkMode) {
             g.drawImage(walkAnimation.getSprite(), walking, 655, 50, 50, null);
             walking += 3;
