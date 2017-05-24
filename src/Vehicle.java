@@ -1,6 +1,5 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
@@ -21,7 +20,7 @@ public class Vehicle extends GameObject {
 
     private void getImage() {
         //different depending on which evolution you are on
-        URL url = Melee.class.getResource("Images/dino.png");
+        URL url = Jigglypuff.class.getResource("Images/dino.png");
         try {
             image = ImageIO.read(url);
         } catch (Exception e) {

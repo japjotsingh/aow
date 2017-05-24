@@ -1,9 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 
 /**
  * Created by home on 5/9/17.
@@ -25,7 +23,7 @@ public class Archer extends GameObject {
 
     private void getImage() {
         //changes depending on evoltion
-        URL url = Melee.class.getResource("Images/sling.png");
+        URL url = Jigglypuff.class.getResource("Images/sling.png");
         try {
             image = ImageIO.read(url);
         } catch (Exception e) {
@@ -34,7 +32,7 @@ public class Archer extends GameObject {
     }
 
     private void sprite(){
-        URL url = Melee.class.getResource("Images/blueRunner.png");
+        URL url = Jigglypuff.class.getResource("Images/blueRunner.png");
         try {
             sheet = ImageIO.read(url);
         } catch (Exception e) {

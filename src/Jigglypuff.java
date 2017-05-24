@@ -12,11 +12,12 @@ import javax.swing.Timer;
 /**
  * Created by home on 5/9/17.
  */
-public class Melee extends GameObject {
+public class Jigglypuff extends GameObject {
 
     private int panelWidth;
     private int frameDelay = 8;
-    private boolean attackMode = false;
+    private boolean walkMode = true;
+    private boolean walks = true;
     Timer t;
 
     private BufferedImage[] walkingJig  = {Sprite.getSprite(1, 163, 148, 160, "jwalk"),
@@ -26,20 +27,20 @@ public class Melee extends GameObject {
                                             Sprite.getSprite(311, 1, 152, 160, "jwalk"),
                                             Sprite.getSprite(153, 1, 156, 158, "jwalk")};
 
-    private BufferedImage[] jigAttack = {Sprite.getSprite(1,1,117,132, "jigatk"),
-            Sprite.getSprite(120,1,110,112, "jigatk"),
-            Sprite.getSprite(232,1,121,123, "jigatk"),
-            Sprite.getSprite(355,1,120,123, "jigatk"),
-            Sprite.getSprite(1,135,112,125, "jigatk"),
-            Sprite.getSprite(115,135,141,128, "jigatk"),
-            Sprite.getSprite(258,135,119,127, "jigatk"),
-            Sprite.getSprite(379,135,128,123, "jigatk")};
+    private BufferedImage[] jigAttack = {Sprite.getSprite(1,1,192,186, "jigAtk"),
+                                        Sprite.getSprite(195,1,169,175, "jigAtk"),
+                                        Sprite.getSprite(1,189,196,180, "jigAtk"),
+                                        Sprite.getSprite(199,189,192,174, "jigAtk"),
+                                        Sprite.getSprite(1,371,204, 175, "jigAtk"),
+                                        Sprite.getSprite(207,371,186,178, "jigAtk"),
+                                        Sprite.getSprite(1,551,238,179, "jigAtk"),
+                                        Sprite.getSprite(241,551,175,183, "jigAtk")};
 
 
     private Animation walkingJiggly = new Animation(walkingJig, frameDelay);
     private Animation walkAnimation = walkingJiggly;
 
-    private Animation attackingJiggly = new Animation(jigAttack, frameDelay);
+    private Animation attackingJiggly = new Animation(jigAttack, frameDelay+4);
     private Animation attackAnimation = attackingJiggly;
 
     public void setPanelWidth(int p){
@@ -47,7 +48,7 @@ public class Melee extends GameObject {
     }
 
 
-    public Melee(String n, int h, int p) {
+    public Jigglypuff(String n, int h, int p) {
         panelWidth = p;
         setName(n);
         setHealth(h);
@@ -55,7 +56,12 @@ public class Melee extends GameObject {
         t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                walkAnimation.update();
+                if(walks) {
+                    walkAnimation.update();
+                }
+                else{
+                    attackAnimation.update();
+                }
             }
         });
 
@@ -66,15 +72,18 @@ public class Melee extends GameObject {
 
     public void draw(Graphics g) {
 
-//        if(attackMode) {
-//            g.drawImage(attackAnimation.getSprite(), 10, 655, 50, 50, null);
-//            System.out.println("attk");
-//        }
-        g.drawImage(walkAnimation.getSprite(), walking, 655, 50, 50, null);
-        walking += 3;
+        if(walkMode) {
+            g.drawImage(walkAnimation.getSprite(), walking, 655, 50, 50, null);
+            walking += 3;
 
-        if (walking + 27 > panelWidth) {
-            System.out.println("atattack!");
+            if (walking + 90 > panelWidth) {
+                walkMode = false;
+            }
+        }
+
+        else{
+            walks = false;
+            g.drawImage(attackAnimation.getSprite(), walking, 651, 50, 50, null);
         }
 
     }

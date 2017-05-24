@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.*;
 import java.net.URL;
-import java.util.Random;
 
 /**
  * Created by home on 5/5/17.
@@ -15,12 +14,12 @@ public class GamePanel extends JPanel implements MouseListener{
     Graphics g;
     private int panelWidth;
 
-    List<Melee> meleeList = new ArrayList<>();
+    List<Jigglypuff> jigglypuffList = new ArrayList<>();
     List<Archer> archerList = new ArrayList<>();
     List<Vehicle> vehicleList = new ArrayList<>();
 
     Timer t;
-    JButton unit, melee, archer, vehicle, back;
+    JButton unit, jigglypuff, archer, vehicle, back;
     boolean mainScreen = true;
 
     public GamePanel(int w, int h) {
@@ -78,10 +77,10 @@ public class GamePanel extends JPanel implements MouseListener{
         });
 
         // in unit menu
-        melee = new JButton("Club Man");
-        melee.setBounds(500, 50,70, 20);
-        add(melee);
-        melee.addActionListener(new ActionListener() {
+        jigglypuff = new JButton("Jigglypuff");
+        jigglypuff.setBounds(500, 50,70, 20);
+        add(jigglypuff);
+        jigglypuff.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //opens the unit menu
@@ -95,10 +94,10 @@ public class GamePanel extends JPanel implements MouseListener{
 //                int hp = -1;// base this on the t from above and
 //                int price = -1;// but based on the choices above
                 //have the right unit costs but not hp and weapon damage
-                Melee ma = new Melee("Club Man", 10, panelWidth);
+                Jigglypuff ma = new Jigglypuff("Jigglypuff", 10, panelWidth);
                 ma.setPrice(15);
-                ma.setWeapon("Club", 5);
-                meleeList.add(ma);
+                ma.setWeapon("hands", 5);
+                jigglypuffList.add(ma);
 //                repaint();
 
                 /*
@@ -113,6 +112,8 @@ public class GamePanel extends JPanel implements MouseListener{
                  */
             }
         });
+
+
 
         archer = new JButton("Slingshot Man");
         archer.setBounds(600, 50,70, 20);
@@ -160,7 +161,7 @@ public class GamePanel extends JPanel implements MouseListener{
 
     public void getBkgd() {
         // different depending on which evolution
-        URL url = Melee.class.getResource("Images/prehistoric.png");
+        URL url = Jigglypuff.class.getResource("Images/prehistoric.png");
         try {
             bkgd = ImageIO.read(url);
         } catch (Exception e) {
@@ -186,7 +187,7 @@ public class GamePanel extends JPanel implements MouseListener{
         // a boolean switch for if we are in the unit menu or main menu, boolean switches with back button
 
         if(mainScreen) {
-            melee.setVisible(false);
+            jigglypuff.setVisible(false);
             archer.setVisible(false);
             vehicle.setVisible(false);
 
@@ -196,17 +197,17 @@ public class GamePanel extends JPanel implements MouseListener{
         else{
             unit.setVisible(false);
 
-            melee.setLocation(panelWidth-300, 30);
+            jigglypuff.setLocation(panelWidth-300, 30);
             archer.setLocation(panelWidth-200, 30);
             vehicle.setLocation(panelWidth-100, 30);
 
-            melee.setVisible(true);
+            jigglypuff.setVisible(true);
             archer.setVisible(true);
             vehicle.setVisible(true);
         }
 
 
-        for(Melee m: this.meleeList){
+        for(Jigglypuff m: this.jigglypuffList){
             m.setPanelWidth(panelWidth);
             m.draw(g);
         }
