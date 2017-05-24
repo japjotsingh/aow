@@ -20,38 +20,34 @@ public class Jigglypuff extends GameObject {
     private boolean walks = true;
     Timer t;
 
-    private BufferedImage[] walkingJig  = {Sprite.getSprite(1, 163, 148, 160, "jwalk"),
-                                            Sprite.getSprite(1, 1, 150, 158, "jwalk"),
-                                            Sprite.getSprite(151, 163, 152, 168, "jwalk"),
-                                            Sprite.getSprite(305, 163, 156, 170, "jwalk"),
-                                            Sprite.getSprite(311, 1, 152, 160, "jwalk"),
-                                            Sprite.getSprite(153, 1, 156, 158, "jwalk")};
+    private BufferedImage[] walk;
+    private BufferedImage[] attack;
 
-    private BufferedImage[] jigAttack = {Sprite.getSprite(1,1,192,186, "jigAtk"),
-                                        Sprite.getSprite(195,1,169,175, "jigAtk"),
-                                        Sprite.getSprite(1,189,196,180, "jigAtk"),
-                                        Sprite.getSprite(199,189,192,174, "jigAtk"),
-                                        Sprite.getSprite(1,371,204, 175, "jigAtk"),
-                                        Sprite.getSprite(207,371,186,178, "jigAtk"),
-                                        Sprite.getSprite(1,551,238,179, "jigAtk"),
-                                        Sprite.getSprite(241,551,175,183, "jigAtk")};
+    private Animation walkAnimation;
 
-
-    private Animation walkingJiggly = new Animation(walkingJig, frameDelay);
-    private Animation walkAnimation = walkingJiggly;
-
-    private Animation attackingJiggly = new Animation(jigAttack, frameDelay+4);
-    private Animation attackAnimation = attackingJiggly;
+    private Animation attackAnimation;
 
     public void setPanelWidth(int p){
         panelWidth = p;
     }
 
 
-    public Jigglypuff(String n, int h, int p) {
+    public Jigglypuff(String n, int h, int p){
         panelWidth = p;
         setName(n);
         setHealth(h);
+
+        attack= new BufferedImage[8];
+        for (int i = 0; i < 8; i++) {
+            attack[i] = Sprite.getSprite(i, "jigAtk", "jigAtk.txt");
+        }
+        attackAnimation = new Animation(attack, frameDelay+4);
+
+        walk = new BufferedImage[7];
+        for (int i = 0; i < 7; i++) {
+            walk[i] = Sprite.getSprite(i, "jwalk", "jwalk.txt");
+        }
+        walkAnimation = new Animation(walk, frameDelay);
 
         t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override
@@ -71,7 +67,6 @@ public class Jigglypuff extends GameObject {
     int walking = 0;
 
     public void draw(Graphics g) {
-
         if(walkMode) {
             g.drawImage(walkAnimation.getSprite(), walking, 655, 50, 50, null);
             walking += 3;
@@ -85,7 +80,6 @@ public class Jigglypuff extends GameObject {
             walks = false;
             g.drawImage(attackAnimation.getSprite(), walking, 651, 50, 50, null);
         }
-
     }
 
 }

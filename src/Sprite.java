@@ -26,37 +26,41 @@ public class Sprite {
     public Sprite() {
     }
 
-    public static void getSprite(int i, String file, String infoFileName) {
+    public static BufferedImage getSprite(int i, String file, String infoFileName){
+        try {
+            spriteSheet = loadSprite(file);
+            FileReader fileR = new FileReader("/Users/home/Desktop/CompSci/aow/src/res/" + infoFileName);
+            BufferedReader reader = new BufferedReader(fileR);
 
-        int x,y,w,h;
+            int x = 0;
+            int y = 0;
+            int w = 0;
+            int h = 0;
 
-        x = 2;
-        y = 2;
-        w = 2;
-        h = 2;
+            String line = reader.readLine();
 
+            while (line != null) {
+                if(line.contains("<sprite")) {
+                    int spriteN = Integer.parseInt(line.substring(line.indexOf("n=\"") + 3, line.indexOf(".png")));
+                    if (spriteN == i+1) {
 
-        spriteSheet = loadSprite(file);
-
-        String line = null;
-        try{
-            FileReader reader = new FileReader(infoFileName);
-            BufferedReader breader = new BufferedReader(reader);
-
-            while((line = breader.readLine()) != null){
-                if(line.equalsIgnoreCase("<sprite n=" + i)){
-                    System.out.println(line);
+                        x = Integer.parseInt(line.substring(line.indexOf("x=\"") + 3, line.indexOf("\" y=")));
+                        y = Integer.parseInt(line.substring(line.indexOf("y=\"") + 3, line.indexOf("\" w=")));
+                        w = Integer.parseInt(line.substring(line.indexOf("w=\"") + 3, line.indexOf("\" h=")));
+                        h = Integer.parseInt(line.substring(line.indexOf("h=\"") + 3, line.indexOf("\" pX=")));
+                        return spriteSheet.getSubimage(x, y, w, h);
+                    }
                 }
-            }
+                line = reader.readLine();
 
-            breader.close();
+            }
+            reader.close();
         }
-        catch (Exception e){
+        catch(Exception e){
             e.printStackTrace();
         }
 
-
-        return spriteSheet.getSubimage(x,y,w,h);
+        return null;
     }
 
 }

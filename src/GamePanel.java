@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements MouseListener{
     JButton unit, jigglypuff, archer, vehicle, back;
     boolean mainScreen = true;
 
-    public GamePanel(int w, int h) {
+    public GamePanel(int w, int h){
         this.setPreferredSize(new Dimension(w, h));
         this.setBackground(Color.GREEN);
 
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements MouseListener{
     }
 
     // every time user clicks to get a new one, if the user has enough money they can buy a new one
-    public void initialize() {
+    public void initialize(){
 
         addMouseListener(this);
         initButtons();
@@ -82,7 +82,7 @@ public class GamePanel extends JPanel implements MouseListener{
         add(jigglypuff);
         jigglypuff.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 //opens the unit menu
                 //open panel to buy units
                 //System.out.println("open units panel");
@@ -94,10 +94,12 @@ public class GamePanel extends JPanel implements MouseListener{
 //                int hp = -1;// base this on the t from above and
 //                int price = -1;// but based on the choices above
                 //have the right unit costs but not hp and weapon damage
-                Jigglypuff ma = new Jigglypuff("Jigglypuff", 10, panelWidth);
-                ma.setPrice(15);
-                ma.setWeapon("hands", 5);
-                jigglypuffList.add(ma);
+
+                    Jigglypuff ma = new Jigglypuff("Jigglypuff", 10, panelWidth);
+                    ma.setPrice(15);
+                    ma.setWeapon("hands", 5);
+                    jigglypuffList.add(ma);
+
 //                repaint();
 
                 /*

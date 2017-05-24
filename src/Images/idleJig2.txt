@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:fa9d370725d14df9bbfc149ebc809d5a:464147247371beb6acbb67bc05baf943:9c0d08114335966c40e32865c9f16293$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="idleJig.png" width="256" height="512">
+    <sprite n="1.png" x="92" y="94" w="93" h="92" pX="0.5" pY="0.5"/>
+    <sprite n="2.png" x="91" y="284" w="90" h="94" pX="0.5" pY="0.5"/>
+    <sprite n="3.png" x="1" y="380" w="92" h="95" pX="0.5" pY="0.5"/>
+    <sprite n="4.png" x="99" y="1" w="90" h="91" pX="0.5" pY="0.5"/>
+    <sprite n="5.png" x="1" y="284" w="88" h="94" pX="0.5" pY="0.5"/>
+    <sprite n="6.png" x="1" y="94" w="89" h="92" pX="0.5" pY="0.5"/>
+    <sprite n="7.png" x="102" y="188" w="91" h="94" pX="0.5" pY="0.5"/>
+    <sprite n="8.png" x="95" y="380" w="95" h="101" pX="0.5" pY="0.5"/>
+    <sprite n="9.png" x="1" y="1" w="96" h="91" pX="0.5" pY="0.5"/>
+    <sprite n="10.png" x="1" y="188" w="99" h="93" pX="0.5" pY="0.5"/>
+</TextureAtlas>

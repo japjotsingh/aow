@@ -13,11 +13,16 @@ public class Main {
     int w = 800;
     int h = 800;
 
-    public static void main(String[] args) {
-        new Main().start();
+    public static void main(String[] args){
+        try {
+            new Main().start();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    private void start() {
+    private void start() throws Exception{
         JFrame frame = new JFrame("Age of War");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new GamePanel(w, h), BorderLayout.CENTER);
