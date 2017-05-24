@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.Random;
 
@@ -39,5 +40,4 @@ public class Vehicle extends GameObject {
 
         g.drawImage(image, x,y,100,100, null);
     }
-
 }

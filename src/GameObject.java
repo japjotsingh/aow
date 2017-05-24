@@ -1,9 +1,10 @@
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 /**
  * Created by home on 5/5/17.
  */
-public abstract class GameObject {
+public abstract class GameObject{
 
     // hit box size
     // health - Archers can hit turrets
@@ -59,9 +60,6 @@ public abstract class GameObject {
     public void attack(GameObject o) {
         o.loseHealth(weapon.getDamage());
     }
-
-    ;
-
     public abstract void draw(Graphics g);
 
 }

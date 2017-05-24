@@ -76,6 +76,9 @@ public class GamePanel extends JPanel implements MouseListener{
             }
         });
 
+        Jigglypuff idleOne = new Jigglypuff("Jigglypuff", 10, panelWidth, true);
+        jigglypuffList.add(idleOne);
+
         // in unit menu
         jigglypuff = new JButton("Jigglypuff");
         jigglypuff.setBounds(500, 50,70, 20);
@@ -95,7 +98,7 @@ public class GamePanel extends JPanel implements MouseListener{
 //                int price = -1;// but based on the choices above
                 //have the right unit costs but not hp and weapon damage
 
-                    Jigglypuff ma = new Jigglypuff("Jigglypuff", 10, panelWidth);
+                    Jigglypuff ma = new Jigglypuff("Jigglypuff", 10, panelWidth, false);
                     ma.setPrice(15);
                     ma.setWeapon("hands", 5);
                     jigglypuffList.add(ma);
@@ -223,11 +226,17 @@ public class GamePanel extends JPanel implements MouseListener{
 //        }
     }
 
-    public void mouseClicked(MouseEvent arg0) {
-        System.out.println(arg0.getX() + " " + arg0.getY());
+    public void mouseClicked(MouseEvent e) {
+            if(jigglypuffList.get(0).isIdle()) {
+//                System.out.println(j.interesecting(e.getX(), e.getY()));
+                Jigglypuff ma = new Jigglypuff("Jigglypuff", 10, panelWidth, false);
+                ma.setPrice(15);
+                ma.setWeapon("hands", 5);
+                jigglypuffList.add(ma);
+            }
     }
 
-    public void mouseEntered(MouseEvent arg0) {
+    public void mouseEntered(MouseEvent e) {
     }
 
     public void mouseExited(MouseEvent arg0) {
@@ -246,8 +255,7 @@ public class GamePanel extends JPanel implements MouseListener{
 
     }
 
-    public void mouseMoved(MouseEvent arg0) {
-
+    public void mouseMoved(MouseEvent e) {
     }
 }
 
