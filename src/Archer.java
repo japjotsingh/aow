@@ -14,7 +14,6 @@ public class Archer extends GameObject {
     private BufferedImage[] spritez = new BufferedImage[10];
 
     public Archer(String n, int h){
-        setName(n);
         setHealth(h);
 
         //make it so that by name you can get the respective pic

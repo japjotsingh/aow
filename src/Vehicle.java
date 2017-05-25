@@ -12,7 +12,6 @@ public class Vehicle extends GameObject {
     private Image image;
 
     public Vehicle(String n, int h){
-        setName(n);
         setHealth(h);
 
         //make it so that by name you can get the respective pic

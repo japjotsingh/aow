@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:abf39c8676e305bf09d9ad2ea194bcc2:927570aff091e9efc2fa5e225c72ba14:de7b738ae2700972f3d4f087fab84e3c$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="kwalk.png" width="512" height="512">
+    <sprite n="1.png" x="1" y="1" w="144" h="132" pX="0.5" pY="0.5"/>
+    <sprite n="2.png" x="147" y="1" w="128" h="131" pX="0.5" pY="0.5"/>
+    <sprite n="3.png" x="277" y="1" w="121" h="131" pX="0.5" pY="0.5"/>
+    <sprite n="4.png" x="1" y="135" w="135" h="129" pX="0.5" pY="0.5"/>
+    <sprite n="5.png" x="138" y="135" w="128" h="127" pX="0.5" pY="0.5"/>
+    <sprite n="6.png" x="268" y="135" w="128" h="135" pX="0.5" pY="0.5"/>
+</TextureAtlas>

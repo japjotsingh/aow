@@ -6,13 +6,13 @@ import javax.swing.Timer;
 /**
  * Created by home on 5/9/17.
  */
-public class Jigglypuff extends GameObject {
+public class Kirby extends GameObject {
 
     Timer t;
 
-    public Jigglypuff(int h, int p, boolean idleSta, boolean isButton){
+    public Kirby(int h, int p, boolean idleSta, boolean isButton){
 
-        unitLocX = 300;
+        unitLocX = 200;
         unitLocY = 10;
 
         bounds.setRect(0,651,50,50);
@@ -22,23 +22,23 @@ public class Jigglypuff extends GameObject {
         this.idleSta = idleSta;
         this.isButton = isButton;
 
-        this.attack= new BufferedImage[8];
-        for (int i = 0; i < 8; i++) {
-            attack[i] = Sprite.getSprite(i, "jatk", "jatk.txt");
+        this.attack= new BufferedImage[6];
+        for (int i = 0; i < 6; i++) {
+            attack[i] = Sprite.getSprite(i, "katk", "katk.txt");
         }
-        attackAnimation = new Animation(attack, frameDelay+4);
-
-        walk = new BufferedImage[7];
-        for (int i = 0; i < 7; i++) {
-            walk[i] = Sprite.getSprite(i, "jwalk", "jwalk.txt");
+        attackAnimation = new Animation(attack, frameDelay+10);
+//
+        walk = new BufferedImage[6];
+        for (int i = 0; i < 6; i++) {
+            walk[i] = Sprite.getSprite(i, "kwalk", "kwalk.txt");
         }
         walkAnimation = new Animation(walk, frameDelay);
 
-        this.idle = new BufferedImage[10];
-        for (int i = 0; i < 10; i++) {
-            this.idle[i] = Sprite.getSprite(i, "jidle", "jidle.txt");
+        this.idle = new BufferedImage[2];
+        for (int i = 0; i < 2; i++) {
+            this.idle[i] = Sprite.getSprite(i, "kidle", "kidle.txt");
         }
-        idleAnimation = new Animation(idle, frameDelay+10);
+        idleAnimation = new Animation(idle, frameDelay+50);
 
         t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override
