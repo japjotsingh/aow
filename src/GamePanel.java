@@ -1,10 +1,13 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.awt.event.*;
 import java.net.URL;
+import java.util.Set;
 
 /**
  * Created by home on 5/5/17.
@@ -13,6 +16,8 @@ public class GamePanel extends JPanel implements MouseListener {
     Image bkgd;
     Graphics g;
     private int panelWidth;
+
+    List<GameObject> allChars = new ArrayList<>();
 
     List<Jigglypuff> jigglypuffList = new ArrayList<>();
     List<Kirby> kirbyList = new ArrayList<>();
@@ -64,10 +69,10 @@ public class GamePanel extends JPanel implements MouseListener {
     public void initButtons() {
         setLayout(null);
 
-        Jigglypuff idleOne = new Jigglypuff(10, panelWidth, true, true);
+        Jigglypuff idleOne = new Jigglypuff(10, panelWidth, true, true, false);
         jigglypuffList.add(idleOne);
 
-        Kirby idleKirby = new Kirby(10, panelWidth, true, true);
+        Kirby idleKirby = new Kirby(10, panelWidth, true, true, false);
         kirbyList.add(idleKirby);
 
         back = new JButton("back");
@@ -88,13 +93,14 @@ public class GamePanel extends JPanel implements MouseListener {
         jp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jigglypuff ma = new Jigglypuff(10, panelWidth, false, false);
+                Jigglypuff ma = new Jigglypuff(10, panelWidth, false, false, true);
                 ma.setPrice(15);
                 ma.setWeapon("hands", 5);
                 jigglypuffList.add(1, ma);
+                allChars.add(ma);
             }
         });
-        
+
         kb = new JButton("kirby");
         kb.setBounds(500, 100, 70, 20);
         add(kb);
@@ -102,10 +108,11 @@ public class GamePanel extends JPanel implements MouseListener {
         kb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Kirby ma = new Kirby(10, panelWidth, false, false);
+                Kirby ma = new Kirby(10, panelWidth, false, false, true);
                 ma.setPrice(15);
                 ma.setWeapon("hands", 5);
                 kirbyList.add(1, ma);
+                allChars.add(ma);
             }
         });
 
@@ -252,6 +259,20 @@ public class GamePanel extends JPanel implements MouseListener {
             k.setPanelWidth(panelWidth);
             k.draw(g);
         }
+
+        for (int i = 0; i < allChars.size(); i++) {
+            for (int j = i+1; j < allChars.size(); j++) {
+                if(j!=i){
+                    if(allChars.get(i).getBounds().intersects(allChars.get(j).getBounds())){
+//                        System.out.println("##!");
+                        allChars.get(j).walkMode = false;
+                        allChars.get(j).isNowIdle = true;
+                    }
+                    //when it is no longer intersecting go back to moving
+                }
+            }
+        }
+
 //
 //        for(Archer a: this.archerList){
 //            a.draw(g);
@@ -261,6 +282,7 @@ public class GamePanel extends JPanel implements MouseListener {
 //            v.draw(g);
 //        }
     }
+
 
     public void mouseClicked(MouseEvent e) {
 //        Jigglypuff j = jigglypuffList.get(0);

@@ -13,6 +13,11 @@ public abstract class GameObject{
 
     protected Rectangle2D bounds = new Rectangle2D.Double();
 
+    protected boolean facingRight = true;
+
+    protected int myX = 0;
+    protected int myY = 651;
+
     protected int unitLocX;
     protected int unitLocY;
 
@@ -20,8 +25,10 @@ public abstract class GameObject{
     protected boolean walkMode = true;
     protected boolean walks = true;
     protected boolean idleSta = false;
+
+    protected boolean isNowIdle = false;
+
     protected boolean isButton = false;
-    protected int walking = 0;
     private int health;
     private Weapon weapon;
     private int price;
@@ -39,6 +46,10 @@ public abstract class GameObject{
 
     public boolean isIdle(){
         return idleSta;
+    }
+
+    public void setIsNowIdle(boolean b){
+        isNowIdle = b;
     }
 
     public void setPanelWidth(int p){
@@ -81,31 +92,60 @@ public abstract class GameObject{
         return bounds.intersects(x,y,1,1);
     }
 
+    public boolean collision(GameObject o){
+        return bounds.intersects(o.getBounds());
+    }
+
     public void attack(GameObject o) {
         o.loseHealth(weapon.getDamage());
     }
 
+    public void walk(){
+        myX+=3;
+    }
+
+    public Rectangle2D getBounds(){
+        return bounds;
+    }
+
+    public int myX(){
+        return myX;
+    }
+
     public void draw(Graphics g){
+
+
         if(idleSta){
             g.drawImage(idleAnimation.getSprite(), panelWidth-unitLocX, unitLocY, 30,30, null);
             bounds.setRect(panelWidth-300, 10, 30,30);
         }
 
         else {
-            //modify so that i tonly goes into attack mode once objects hit box collides with another object
+            //modify so that it only goes into attack mode once objects hit box collides with another object
             if (walkMode) {
-                g.drawImage(walkAnimation.getSprite(), walking, 651, 50, 50, null);
-                walking += 3;
-                bounds.setRect(walking,651,50,50);
+                g.drawImage(walkAnimation.getSprite(), myX, myY, 50, 50, null);
+                walk();
+                bounds.setRect(myX,myY,50,50);
 
-                if (walking + 90 > panelWidth) {
+                //if hitbox collides
+                if (myX+80>panelWidth) {
                     walkMode = false;
+                    isNowIdle = true;
                 }
-            } else {
-                walks = false;
-                g.drawImage(attackAnimation.getSprite(), walking, 651, 50, 50, null);
-                bounds.setRect(walking,651,50,50);
 
+            } else {
+
+                if(isNowIdle){
+                    System.out.println("idle anim");
+                    walks = false;
+                    g.drawImage(idleAnimation.getSprite(), myX, myY, 50,50, null);
+                    bounds.setRect(myX, myY, 50,50);
+                }
+                else {
+                    walks = false;
+                    g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
+                    bounds.setRect(myX, myY, 50, 50);
+                }
             }
         }
     };

@@ -10,7 +10,9 @@ public class Jigglypuff extends GameObject {
 
     Timer t;
 
-    public Jigglypuff(int h, int p, boolean idleSta, boolean isButton){
+    public Jigglypuff(int h, int p, boolean idleSta, boolean isButton, boolean facingRight){
+
+        this.facingRight = facingRight;
 
         unitLocX = 300;
         unitLocY = 10;

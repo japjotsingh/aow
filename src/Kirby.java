@@ -10,7 +10,9 @@ public class Kirby extends GameObject {
 
     Timer t;
 
-    public Kirby(int h, int p, boolean idleSta, boolean isButton){
+    public Kirby(int h, int p, boolean idleSta, boolean isButton, boolean facingRight){
+
+        this.facingRight = facingRight;
 
         unitLocX = 200;
         unitLocY = 10;
@@ -22,11 +24,11 @@ public class Kirby extends GameObject {
         this.idleSta = idleSta;
         this.isButton = isButton;
 
-        this.attack= new BufferedImage[6];
-        for (int i = 0; i < 6; i++) {
+        this.attack= new BufferedImage[8];
+        for (int i = 0; i < 8; i++) {
             attack[i] = Sprite.getSprite(i, "katk", "katk.txt");
         }
-        attackAnimation = new Animation(attack, frameDelay+10);
+        attackAnimation = new Animation(attack, frameDelay+5);
 //
         walk = new BufferedImage[6];
         for (int i = 0; i < 6; i++) {
@@ -59,5 +61,4 @@ public class Kirby extends GameObject {
 
         t.start();
     }
-
 }
