@@ -263,12 +263,12 @@ public class GamePanel extends JPanel implements MouseListener {
         for (int i = 0; i < allChars.size(); i++) {
             for (int j = i+1; j < allChars.size(); j++) {
                 if(j!=i){
-                    if(allChars.get(i).getBounds().intersects(allChars.get(j).getBounds())){
-//                        System.out.println("##!");
-                        allChars.get(j).walkMode = false;
-                        allChars.get(j).isNowIdle = true;
+                    if(allChars.get(i).getBounds().intersects(allChars.get(j).getBounds())) {
+                        allChars.get(j).setIntersecting(true);
                     }
-                    //when it is no longer intersecting go back to moving
+                    else{
+                        allChars.get(j).setIntersecting(false);
+                    }
                 }
             }
         }

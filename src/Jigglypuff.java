@@ -21,7 +21,7 @@ public class Jigglypuff extends GameObject {
 
         panelWidth = p;
         setHealth(h);
-        this.idleSta = idleSta;
+//        this.idleSta = idleSta;
         this.isButton = isButton;
 
         this.attack= new BufferedImage[8];
@@ -45,17 +45,17 @@ public class Jigglypuff extends GameObject {
         t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(idleSta){
-                    idleAnimation.update();
-                }
-                else {
-                    // depends on hitbox
-                    if (walks) {
-                        walkAnimation.update();
-                    } else {
-                        attackAnimation.update();
-                    }
-                }
+//                if(idleSta){
+//                    idleAnimation.update();
+//                }
+//                else {
+//                    // depends on hitbox
+//                    if (walks) {
+//                        walkAnimation.update();
+//                    } else {
+//                        attackAnimation.update();
+//                    }
+//                }
             }
         });
 
