@@ -61,10 +61,15 @@ public class Kirby extends GameObject {
                 else if(!intersecting && myX+80<panelWidth){
                     walkAnimation.update();
                 }
+                else if(myX+80>panelWidth){
+                    System.out.println("at the end");
+                }
+
                 //if intersecting && facing left attack
 
                 else{
-                    System.out.println("##$% -- Animation Update Exception!");
+//                    System.out.println("##$% -- Animation Update Exception!");
+                    attackAnimation.update();
                 }
 //                if(idleSta){
 //                    idleAnimation.update();
