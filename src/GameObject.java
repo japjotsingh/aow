@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 public abstract class GameObject{
 
     // hit box size
-
     protected Rectangle2D bounds = new Rectangle2D.Double();
 
     protected boolean facingRight = true;
@@ -23,10 +22,6 @@ public abstract class GameObject{
 
     protected int frameDelay = 8;
 
-//    protected boolean walkMode = true;
-//    protected boolean walks = true;
-//    protected boolean idleSta = false;
-//    protected boolean isNowIdle = false;
     protected boolean intersecting = false;
     protected boolean isButton = false;
 
@@ -53,14 +48,6 @@ public abstract class GameObject{
     public boolean isButton(){
         return this.isButton;
     }
-
-//    public boolean isIdle(){
-//        return idleSta;
-//    }
-//
-//    public void setIsNowIdle(boolean b){
-//        isNowIdle = b;
-//    }
 
     public void setPanelWidth(int p){
         panelWidth = p;
@@ -154,40 +141,6 @@ public abstract class GameObject{
                 System.out.println("##$% -- EXCEPTION!!!");
             }
         }
-
-
-//        if(idleSta){
-//            g.drawImage(idleAnimation.getSprite(), panelWidth-unitLocX, unitLocY, 30,30, null);
-//            bounds.setRect(panelWidth-300, 10, 30,30);
-//        }
-//
-//        else {
-//            //modify so that it only goes into attack mode once objects hit box collides with another object
-//            if (walkMode) {
-//                g.drawImage(walkAnimation.getSprite(), myX, myY, 50, 50, null);
-//                walk();
-//                bounds.setRect(myX,myY,50,50);
-//
-//                //if hitbox collides
-//                if (myX+80>panelWidth) {
-//                    walkMode = false;
-//                    isNowIdle = true;
-//                }
-//
-//            } else {
-//
-//                if(isNowIdle){
-//                    walks = false;
-//                    g.drawImage(idleAnimation.getSprite(), myX, myY, 50,50, null);
-//                    bounds.setRect(myX, myY, 50,50);
-//                }
-//                else {
-//                    walks = false;
-//                    g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
-//                    bounds.setRect(myX, myY, 50, 50);
-//                }
-//            }
-//        }
     }
 
 }

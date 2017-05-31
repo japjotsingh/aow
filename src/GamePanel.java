@@ -129,64 +129,7 @@ public class GamePanel extends JPanel implements MouseListener {
 //
 //                // Make a new unit!
 //                //hashmap, with type and evoltion get info
-//                // get the name from the radio that is selected,
-////                String t = "";
-////                int hp = -1;// base this on the t from above and
-////                int price = -1;// but based on the choices above
-//                //have the right unit costs but not hp and weapon damage
-//
-//                    Jigglypuff ma = new Jigglypuff(10, panelWidth, false);
-//                    ma.setPrice(15);
-//                    ma.setWeapon("hands", 5);
-//                    jigglypuffList.add(ma);
-//
-////                repaint();
-//
-//                /*
-//                If clicks archer icon
-//                String t = "";
-//                int hp = -1;
-//                int price = -1;
-//                Archer aa = new Archer (t,hp);
-//                aa.setPrice(price);
-//                aa.setWeapon("Bow", 15);
-//                archerList.add(aa);
-//                 */
-//            }
-//        });
-
-
-//        archer = new JButton("Slingshot Man");
-//        archer.setBounds(600, 50,70, 20);
-//        add(archer);
-//        archer.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-////                String t = "";
-////                int hp = -1;
-////                int price = -1;
-//                Archer aa = new Archer ("Slingshot Man", 35);
-//                aa.setPrice(25);
-//                aa.setWeapon("Bow", 15);
-//                archerList.add(aa);
-//            }
-//        });
-//
-//        vehicle = new JButton("Dino Rider");
-//        vehicle.setBounds(700, 50,70, 20);
-//        add(vehicle);
-//        vehicle.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-////                String t = "";
-////                int hp = -1;
-////                int price = -1;
-//                Vehicle v = new Vehicle ("Dino Rider", 35);
-//                v.setPrice(100);
-//                v.setWeapon("Spear", 15);
-//                vehicleList.add(v);
-//            }
-//        });
+//                // get the name from the radio that is selected;
 
 //        unit = new JButton("UnitMenu");
 //        unit.setBounds(500,50, 70, 20);
@@ -272,8 +215,6 @@ public class GamePanel extends JPanel implements MouseListener {
                 }
             }
         }
-
-//
 //        for(Archer a: this.archerList){
 //            a.draw(g);
 //        }
@@ -285,26 +226,7 @@ public class GamePanel extends JPanel implements MouseListener {
 
 
     public void mouseClicked(MouseEvent e) {
-//        Jigglypuff j = jigglypuffList.get(0);
-//        Kirby k = kirbyList.get(0);
-////
-////        if (j.interesecting(e.getX(), e.getY())) {
-//            Jigglypuff ma = new Jigglypuff(10, panelWidth, false, false);
-//            ma.setPrice(15);
-//            ma.setWeapon("hands", 5);
-//            jigglypuffList.add(1, ma);
-////        }
-////
-//        if (k.interesecting(e.getX(), e.getY())) {
-//            Kirby mk = new Kirby(10, panelWidth, false, false);
-//            mk.setPrice(15);
-//            mk.setWeapon("hammer", 5);
-//            kirbyList.add(1, mk);
-//        }
-
         System.out.println(e.getX() + " " + e.getY());
-
-        // exact same code modified for different sprites
     }
 
     public void mouseEntered(MouseEvent e) {

@@ -22,7 +22,6 @@ public class Kirby extends GameObject {
 
         panelWidth = p;
         setHealth(h);
-//        this.idleSta = idleSta;
         this.isButton = isButton;
 
         //attack Animation created
@@ -71,22 +70,6 @@ public class Kirby extends GameObject {
 //                    System.out.println("##$% -- Animation Update Exception!");
                     attackAnimation.update();
                 }
-//                if(idleSta){
-//                    idleAnimation.update();
-//                }
-//
-//                if(isNowIdle){
-//                    idleAnimation.update();
-//                }
-//
-//                else {
-//                    // depends on hitbox
-//                    if (walks) {
-//                        walkAnimation.update();
-//                    } else {
-//                        attackAnimation.update();
-//                    }
-//                }
             }
         });
 

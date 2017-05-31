@@ -21,21 +21,23 @@ public class Jigglypuff extends GameObject {
 
         panelWidth = p;
         setHealth(h);
-//        this.idleSta = idleSta;
         this.isButton = isButton;
 
+        //attack animation is created
         this.attack= new BufferedImage[8];
         for (int i = 0; i < 8; i++) {
             attack[i] = Sprite.getSprite(i, "jatk", "jatk.txt");
         }
         attackAnimation = new Animation(attack, frameDelay+4);
 
+        //walk animation
         walk = new BufferedImage[7];
         for (int i = 0; i < 7; i++) {
             walk[i] = Sprite.getSprite(i, "jwalk", "jwalk.txt");
         }
         walkAnimation = new Animation(walk, frameDelay);
 
+        //idle animation
         this.idle = new BufferedImage[10];
         for (int i = 0; i < 10; i++) {
             this.idle[i] = Sprite.getSprite(i, "jidle", "jidle.txt");
@@ -45,17 +47,27 @@ public class Jigglypuff extends GameObject {
         t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if(idleSta){
-//                    idleAnimation.update();
-//                }
-//                else {
-//                    // depends on hitbox
-//                    if (walks) {
-//                        walkAnimation.update();
-//                    } else {
-//                        attackAnimation.update();
-//                    }
-//                }
+//                //cycle throgh idle if it is a button, intersecting, or at the end (turret)
+                if(isButton){
+                    idleAnimation.update();
+                }
+                else if(intersecting || myX+80>panelWidth){
+                    idleAnimation.update();
+                }
+                //if not intersecting anythign and not at the end walk
+                else if(!intersecting && myX+80<panelWidth){
+                    walkAnimation.update();
+                }
+                else if(myX+80>panelWidth){
+                    System.out.println("at the end");
+                }
+
+                //if intersecting && facing left attack
+
+                else{
+//                    System.out.println("##$% -- Animation Update Exception!");
+                    attackAnimation.update();
+                }
             }
         });
 
