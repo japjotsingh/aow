@@ -40,11 +40,11 @@ public class Metaknight extends GameObject {
 
 
         //idle Animation created
-        this.idle = new BufferedImage[4];
-        for (int i = 0; i < 4; i++) {
+        this.idle = new BufferedImage[9];
+        for (int i = 0; i < 9; i++) {
             this.idle[i] = Sprite.getSprite(i, "midle", "midle.txt");
         }
-        idleAnimation = new Animation(idle, frameDelay + 50);
+        idleAnimation = new Animation(idle, frameDelay + 20);
 
         t = new javax.swing.Timer(frameDelay, new ActionListener() {
             @Override

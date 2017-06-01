@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements MouseListener {
     List<Metaknight> metaList = new ArrayList<>();
 
     List<CAmerica> captList = new ArrayList<>();
+    List<Hulk> hulkList = new ArrayList<>();
 
     Timer t, ts, capt, hulk;
 
@@ -52,9 +53,21 @@ public class GamePanel extends JPanel implements MouseListener {
             public void actionPerformed(ActionEvent e) {
                 CAmerica ca = new CAmerica(100, panelWidth, false, false, false);
                 ca.setPrice(15);
-                ca.setWeapon("shield", 1);
+                ca.setWeapon("shield", 4);
                 captList.add(ca);
                 allChars.add(ca);
+            }
+        });
+
+        hulk = new Timer(10000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Hulk h = new Hulk(105, panelWidth, false, false, false);
+                h.setPrice(15);
+                h.setWeapon("shield", 6);
+                //next one does 8
+                hulkList.add(h);
+                allChars.add(h);
             }
         });
 
@@ -68,6 +81,7 @@ public class GamePanel extends JPanel implements MouseListener {
         // cue to select difficulty
         t.start();
         capt.start();
+        hulk.start();
     }
 
     public void getInfo(GameObject o) {
@@ -162,6 +176,16 @@ public class GamePanel extends JPanel implements MouseListener {
             }
         }
 
+        for (int i = 0; i < metaList.size(); i++) {
+            Metaknight k = metaList.get(i);
+            if (k.getHealth() <= 0) {
+                metaList.remove(k);
+            } else {
+                k.setPanelWidth(panelWidth);
+                k.draw(g);
+            }
+        }
+
         for (int i = 0; i < captList.size(); i++) {
             CAmerica c = captList.get(i);
             if (c.getHealth() <= 0) {
@@ -169,6 +193,16 @@ public class GamePanel extends JPanel implements MouseListener {
             } else {
                 c.setPanelWidth(panelWidth);
                 c.draw(g);
+            }
+        }
+
+        for (int i = 0; i < hulkList.size(); i++) {
+            Hulk h = hulkList.get(i);
+            if (h.getHealth() <= 0) {
+                hulkList.remove(h);
+            } else {
+                h.setPanelWidth(panelWidth);
+                h.draw(g);
             }
         }
 
@@ -265,27 +299,27 @@ public class GamePanel extends JPanel implements MouseListener {
         if(mouse.intersects(idleJig.getBounds())){
             Jigglypuff ma = new Jigglypuff(100, panelWidth, false, false, true);
             ma.setPrice(15);
-            ma.setWeapon("hands", 3);
+            ma.setWeapon("hands", 1);
             if(buyUnit(ma.getPrice())) {
                 jigglypuffList.add(1, ma);
                 allChars.add(ma);
             }
         }
 
-//        if(mouse.intersects(idleKirby.getBounds())){
-//            Kirby ma = new Kirby(110, panelWidth, false, false, true);
-//            ma.setPrice(25);
-//            ma.setWeapon("hammer", 5);
-//            if (buyUnit(ma.getPrice())) {
-//                kirbyList.add(1, ma);
-//                allChars.add(ma);
-//            }
-//        }
-
         if(mouse.intersects(idleKirby.getBounds())){
+            Kirby ma = new Kirby(110, panelWidth, false, false, true);
+            ma.setPrice(25);
+            ma.setWeapon("hammer", 3);
+            if (buyUnit(ma.getPrice())) {
+                kirbyList.add(1, ma);
+                allChars.add(ma);
+            }
+        }
+
+        if(mouse.intersects(idleMeta.getBounds())){
             Metaknight m = new Metaknight(120,panelWidth,false,false,true);
             m.setPrice(35);
-            m.setWeapon("blades", 7);
+            m.setWeapon("blades", 5);
             if (buyUnit(m.getPrice())) {
                 metaList.add(1, m);
                 allChars.add(m);

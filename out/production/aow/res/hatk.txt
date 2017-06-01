@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:40e2bdfd04afbee77162bec2e4248831:5d7610079dd820059174948c81035171:0199c94f44b2ed0b219654d364c34980$ -->
+<!-- $TexturePacker:SmartUpdate:f555c0cbcc71d717aac7dd3b94c57cf4:faae401cc1a9aaa5489cb22f58760b7a:84d1974e472df457ef53c89050f80c02$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -19,14 +19,15 @@ vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
 verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
 triangles  => sprite triangulation, 3 vertex indices per triangle
 -->
-<TextureAtlas imagePath="midle.png" width="256" height="512">
-    <sprite n="1.png" x="0" y="386" w="106" h="126" pX="0.5" pY="0.5"/>
-    <sprite n="2.png" x="125" y="0" w="107" h="87" pX="0.5" pY="0.5"/>
-    <sprite n="3.png" x="0" y="87" w="100" h="88" pX="0.5" pY="0.5"/>
-    <sprite n="4.png" x="0" y="0" w="125" h="81" pX="0.5" pY="0.5"/>
-    <sprite n="5.png" x="103" y="176" w="119" h="99" pX="0.5" pY="0.5"/>
-    <sprite n="6.png" x="100" y="87" w="107" h="89" pX="0.5" pY="0.5"/>
-    <sprite n="7.png" x="0" y="176" w="103" h="96" pX="0.5" pY="0.5"/>
-    <sprite n="8.png" x="0" y="275" w="118" h="110" pX="0.5" pY="0.5"/>
-    <sprite n="9.png" x="118" y="275" w="115" h="111" pX="0.5" pY="0.5"/>
+<TextureAtlas imagePath="atk.png" width="512" height="1024">
+    <sprite n="1.png" x="0" y="0" w="135" h="164" pX="0.5" pY="0.5"/>
+    <sprite n="2.png" x="135" y="0" w="139" h="164" pX="0.5" pY="0.5"/>
+    <sprite n="3.png" x="160" y="347" w="122" h="214" pX="0.5" pY="0.5"/>
+    <sprite n="4.png" x="282" y="347" w="156" h="225" pX="0.5" pY="0.5"/>
+    <sprite n="5.png" x="303" y="167" w="164" h="167" pX="0.5" pY="0.5"/>
+    <sprite n="6.png" x="0" y="167" w="140" h="180" pX="0.5" pY="0.5"/>
+    <sprite n="7.png" x="274" y="0" w="139" h="167" pX="0.5" pY="0.5"/>
+    <sprite n="8.png" x="140" y="167" w="163" h="163" pX="0.5" pY="0.5"/>
+    <sprite n="9.png" x="0" y="572" w="204" h="177" pX="0.5" pY="0.5"/>
+    <sprite n="10.png" x="0" y="347" w="160" h="176" pX="0.5" pY="0.5"/>
 </TextureAtlas>

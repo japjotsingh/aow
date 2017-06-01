@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d2d53eb-f221-42ea-aa82-d81d8bcc5dbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Metaknight.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/aow/GamePanel$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/aow/GamePanel$5.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/GameObject.class" afterPath="$PROJECT_DIR$/out/production/aow/GameObject.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Hulk.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/GamePanel$1.class" afterPath="$PROJECT_DIR$/out/production/aow/GamePanel$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/GamePanel$2.class" afterPath="$PROJECT_DIR$/out/production/aow/GamePanel$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/GamePanel$3.class" afterPath="$PROJECT_DIR$/out/production/aow/GamePanel$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/aow/GamePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/Jigglypuff.class" afterPath="$PROJECT_DIR$/out/production/aow/Jigglypuff.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/Kirby.class" afterPath="$PROJECT_DIR$/out/production/aow/Kirby.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/Main.class" afterPath="$PROJECT_DIR$/out/production/aow/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/Images/midle.png" afterPath="$PROJECT_DIR$/out/production/aow/Images/midle.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/Metaknight.class" afterPath="$PROJECT_DIR$/out/production/aow/Metaknight.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Images/midle.png" afterPath="$PROJECT_DIR$/src/Images/midle.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject.java" afterPath="$PROJECT_DIR$/src/GameObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/aow/res/midle.txt" afterPath="$PROJECT_DIR$/out/production/aow/res/midle.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GamePanel.java" afterPath="$PROJECT_DIR$/src/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jigglypuff.java" afterPath="$PROJECT_DIR$/src/Jigglypuff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Kirby.java" afterPath="$PROJECT_DIR$/src/Kirby.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Metaknight.java" afterPath="$PROJECT_DIR$/src/Metaknight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/midle.txt" afterPath="$PROJECT_DIR$/src/res/midle.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +30,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="288" column="40" lean-forward="true" selection-start-line="288" selection-start-column="40" selection-end-line="288" selection-end-column="40" />
+            <state relative-caret-position="240">
+              <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
               <folding>
                 <element signature="method#getInfo#0;class#GamePanel#0" expanded="false" />
                 <element signature="method#initialize#0;class#GamePanel#0" expanded="false" />
@@ -47,10 +43,52 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Hulk.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hulk.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-645">
+              <caret line="51" column="86" lean-forward="true" selection-start-line="51" selection-start-column="86" selection-end-line="51" selection-end-column="86" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hatk.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/res/hatk.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-30">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hidle.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/res/hidle.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hwalk.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/res/hwalk.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GameObject.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
+            <state relative-caret-position="772">
               <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -64,23 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Kirby.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Kirby.java">
+      <file leaf-file-name="CAmerica.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CAmerica.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Metaknight.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Metaknight.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="664">
-              <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,7 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>set</find>
       <find>idleSt</find>
       <find>walks</find>
       <find>add</find>
@@ -128,6 +153,7 @@
       <find>myX</find>
       <find>allChars</find>
       <find>facingRight</find>
+      <find>capt</find>
       <find>intersectingAtk</find>
     </findStrings>
   </component>
@@ -156,8 +182,10 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Kirby.java" />
         <option value="$PROJECT_DIR$/src/Jigglypuff.java" />
-        <option value="$PROJECT_DIR$/src/Metaknight.java" />
         <option value="$PROJECT_DIR$/src/GameObject.java" />
+        <option value="$PROJECT_DIR$/src/res/midle.txt" />
+        <option value="$PROJECT_DIR$/src/Metaknight.java" />
+        <option value="$PROJECT_DIR$/src/Hulk.java" />
         <option value="$PROJECT_DIR$/src/GamePanel.java" />
       </list>
     </option>
@@ -578,40 +606,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Animation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Animation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2940">
-          <caret line="209" column="7" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="7" />
-          <folding>
-            <element signature="method#getInfo#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#initialize#0;class#GamePanel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Jigglypuff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -845,16 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CAmerica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Jigglypuff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -862,39 +846,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Kirby.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1090#1091#0" expanded="true" />
-            <element signature="e#1321#1322#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#2310#2311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/midle.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,23 +880,100 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/res/midle.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="288" column="40" lean-forward="true" selection-start-line="288" selection-start-column="40" selection-end-line="288" selection-end-column="40" />
-          <folding>
-            <element signature="method#getInfo#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#initialize#0;class#GamePanel#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="343">
+          <caret line="23" column="70" lean-forward="false" selection-start-line="23" selection-start-column="70" selection-end-line="23" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Metaknight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        <state relative-caret-position="90">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kirby.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="772">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1321#1322#0" expanded="true" />
+            <element signature="e#1351#1352#0" expanded="true" />
+            <element signature="e#2310#2311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CAmerica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/hatk.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/hwalk.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/hidle.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hulk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-645">
+          <caret line="51" column="86" lean-forward="true" selection-start-line="51" selection-start-column="86" selection-end-line="51" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+          <folding>
+            <element signature="method#getInfo#0;class#GamePanel#0" expanded="false" />
+            <element signature="method#initialize#0;class#GamePanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
