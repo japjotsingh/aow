@@ -13,19 +13,19 @@ import java.util.Set;
  * Created by home on 5/5/17.
  */
 public class GamePanel extends JPanel implements MouseListener {
-    Image bkgd;
+    Image bkgd, gold;
     Graphics g;
     private int panelWidth;
+
+    // gold you start with
+    protected int goldCount = 100;
 
     List<GameObject> allChars = new ArrayList<>();
 
     List<Jigglypuff> jigglypuffList = new ArrayList<>();
     List<Kirby> kirbyList = new ArrayList<>();
 
-    List<Archer> archerList = new ArrayList<>();
-    List<Vehicle> vehicleList = new ArrayList<>();
-
-    Timer t;
+    Timer t, ts;
     JButton unit, back, jp, kb;
     boolean mainScreen = true;
 
@@ -35,6 +35,15 @@ public class GamePanel extends JPanel implements MouseListener {
 
         initialize();
         getBkgd();
+
+        ts = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //get 1 gold every second
+                goldCount++;
+            }
+        });
+        ts.start();
 
         t = new Timer(30, new ActionListener() {
             @Override
@@ -59,9 +68,16 @@ public class GamePanel extends JPanel implements MouseListener {
         }
     }
 
+    public boolean buyUnit(int cost) {
+        if (goldCount - cost >= 0) {
+            goldCount = goldCount - cost;
+            return true;
+        }
+        return false;
+    }
+
     // every time user clicks to get a new one, if the user has enough money they can buy a new one
     public void initialize() {
-
         addMouseListener(this);
         initButtons();
     }
@@ -69,6 +85,7 @@ public class GamePanel extends JPanel implements MouseListener {
     public void initButtons() {
         setLayout(null);
 
+        //clickable units
         Jigglypuff idleOne = new Jigglypuff(10, panelWidth, true, true, false);
         jigglypuffList.add(idleOne);
 
@@ -108,11 +125,16 @@ public class GamePanel extends JPanel implements MouseListener {
         kb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 Kirby ma = new Kirby(10, panelWidth, false, false, true);
                 ma.setPrice(15);
                 ma.setWeapon("hands", 5);
-                kirbyList.add(1, ma);
-                allChars.add(ma);
+                //sleep and update status
+                if (buyUnit(ma.getPrice())) {
+                    kirbyList.add(1, ma);
+                    allChars.add(ma);
+                }
+
             }
         });
 
@@ -146,23 +168,26 @@ public class GamePanel extends JPanel implements MouseListener {
     public void getBkgd() {
         // different depending on which evolution
         URL url = Jigglypuff.class.getResource("Images/prehistoric.png");
+        URL url2 = Jigglypuff.class.getResource("Images/gold.png");
         try {
             bkgd = ImageIO.read(url);
+            gold = ImageIO.read(url2);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void paintComponent(Graphics g) {
-
         panelWidth = this.getWidth();
-
-//        System.out.println(panelWidth);
-
         g.drawImage(bkgd, 0, 0, 1500, 800, null);
 
+
+        //currenct
+        g.drawImage(gold, 10, 10, 25, 25, null);
+        g.drawString(Integer.toString(goldCount), 35, 28);
+
+
         //drawing menus
-        g.fillRect(0, 0, 200, 100); // xp and gold
         g.fillRect(panelWidth - 300, 0, 300, 100); // main menu area
         g.fillRect(panelWidth - 200, 100, 200, 30); // evolution special
         g.fillRect(0, this.getHeight() - 100, this.getWidth(), 100);// bottom walking platformer
@@ -181,6 +206,7 @@ public class GamePanel extends JPanel implements MouseListener {
 //            unit.setLocation(panelWidth - 300, 30);
 //            unit.setVisible(true);
 //        }
+
 //        else{
 //            unit.setVisible(false);
 //
@@ -204,24 +230,16 @@ public class GamePanel extends JPanel implements MouseListener {
         }
 
         for (int i = 0; i < allChars.size(); i++) {
-            for (int j = i+1; j < allChars.size(); j++) {
-                if(j!=i){
-                    if(allChars.get(i).getBounds().intersects(allChars.get(j).getBounds())) {
+            for (int j = i + 1; j < allChars.size(); j++) {
+                if (j != i) {
+                    if (allChars.get(i).getBounds().intersects(allChars.get(j).getBounds())) {
                         allChars.get(j).setIntersecting(true);
-                    }
-                    else{
+                    } else {
                         allChars.get(j).setIntersecting(false);
                     }
                 }
             }
         }
-//        for(Archer a: this.archerList){
-//            a.draw(g);
-//        }
-//
-//        for(Vehicle v: this.vehicleList){
-//            v.draw(g);
-//        }
     }
 
 

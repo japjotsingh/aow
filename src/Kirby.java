@@ -53,7 +53,7 @@ public class Kirby extends GameObject {
                 if(isButton){
                     idleAnimation.update();
                 }
-                else if(intersecting || myX+80>panelWidth){
+                else if(intersecting || myX+80>=panelWidth){
                     idleAnimation.update();
                 }
                 //if not intersecting anythign and not at the end walk
