@@ -110,6 +110,13 @@ public abstract class GameObject {
         myX += 3;
     }
 
+    public void endLoss(){
+        JOptionPane.showMessageDialog(null, "You lost");
+
+
+        System.exit(0);
+    }
+
     public Rectangle2D getBounds() {
         return bounds;
     }

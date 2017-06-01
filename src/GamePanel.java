@@ -15,7 +15,6 @@ import java.util.Set;
 public class GamePanel extends JPanel implements MouseListener {
 
     //fix the collision
-    //and the damage is only done once every 8 animations not once every tick?
 
     Image bkgd, gold;
     Graphics g;
@@ -189,6 +188,16 @@ public class GamePanel extends JPanel implements MouseListener {
 
 
         starkTower.draw(g);
+
+        if (nintendoTower.getHealth() <= 0) {
+            t.stop();
+            //this.setVisible(false);
+            nintendoTower.end();
+
+
+            System.out.println("Exiting!!");
+            System.exit(0);
+        }
         nintendoTower.draw(g);
 
         //can't use the fast loops because concurrent modification exception :(
@@ -315,20 +324,15 @@ public class GamePanel extends JPanel implements MouseListener {
                         } else {
                             f.setIntersectingAtk(false);
                         }
+
+                        if (s.facingRight == f.facingRight) {
+                            s.setIntersecting(true);
+                        }
+                    } else {
+                        s.setIntersecting(false);
+                        f.setIntersectingAtk(false);
+                        s.setIntersectingAtk(false);
                     }
-//                        if (s.facingRight == f.facingRight) {
-//                            s.setIntersecting(true);
-//                        } else {
-//                            f.setIntersectingAtk(true);
-//                            s.setIntersectingAtk(true);
-//                            f.attack(s);
-//                            s.attack(f);
-//                        }
-//                    } else {
-//                        s.setIntersecting(false);
-//                        f.setIntersectingAtk(false);
-//                        s.setIntersectingAtk(false);
-//                    }
                 }
             }
         }

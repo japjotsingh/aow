@@ -16,10 +16,12 @@ public class Nintendotower extends GameObject{
 
 
         //where it is drawn
-        bounds.setRect(0, 151, 400, 600);
+        bounds.setRect(0, 151, 240, 600);
 
         setHealth(h);
         openImage();
+
+
     }
 
     public void openImage(){
@@ -31,13 +33,22 @@ public class Nintendotower extends GameObject{
         }
     }
 
+    public void end(){
+        JOptionPane.showMessageDialog(null, "You have been defeated by Marvel!");
+        System.out.println("Calling System.exit();");
+        System.exit(0);
+    }
+
     @Override
     public void draw(Graphics g){
         g.drawImage(bkgd, -100, 211, 400,600, null);
         g.drawString(Integer.toString(getHealth()) + " hp", 30, 271);
+
         if(getHealth()<=0){
             //spam them ;)
-            JOptionPane.showMessageDialog(null, "You have been defeated by Marvel!");
+            //end();
+            //setHealth(1000000);
+            //System.exit(0);
         }
 
     }

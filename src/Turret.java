@@ -20,10 +20,11 @@ public class Turret extends GameObject {
 
 
         //where it is drawn
-        bounds.setRect(1200, 151, 400, 600);
+        bounds.setRect(1330, 151, 400, 600);
 
         setHealth(h);
         openImage();
+
     }
 
     public void openImage(){
@@ -39,6 +40,7 @@ public class Turret extends GameObject {
     public void draw(Graphics g){
         g.drawImage(bkgd, 1200, 151, 400,600, null);
         g.drawString(Integer.toString(getHealth()) + " hp", 1270, 171);
+
         if(getHealth()<=0){
             //spam them ;)
             JOptionPane.showMessageDialog(null, "CONGRATULATIONS! You have defeated Marvel!");
