@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 public abstract class GameObject {
 
     // hit box size
+
+    protected boolean turr = false;
+
     protected Rectangle2D bounds = new Rectangle2D.Double();
 
     protected boolean facingRight = true;
@@ -115,6 +118,10 @@ public abstract class GameObject {
         return myX;
     }
 
+    public boolean isTurr(){
+        return turr;
+    }
+
     public void draw(Graphics g) {
 
         if (isButton) {
@@ -122,7 +129,7 @@ public abstract class GameObject {
             g.drawImage(idleAnimation.getSprite(), panelWidth - unitLocX, unitLocY, 50, 50, null);
             bounds.setRect(panelWidth - unitLocX, unitLocY, 50, 50);
 
-        } else {
+        } else if(!turr){
             //add && condition that if the one infront is facing right
             //if intersecting and front side is facing left(AI) then do attack animation
             if (intersectingAtk) {

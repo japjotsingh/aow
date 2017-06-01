@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements MouseListener {
     private int panelWidth;
     protected boolean wentToAtk;
 
-    // gold you start with
+    //starting gold
     protected int goldCount = 100;
 
     List<GameObject> allChars = new ArrayList<>();
@@ -29,8 +29,9 @@ public class GamePanel extends JPanel implements MouseListener {
 
     List<CAmerica> captList = new ArrayList<>();
     List<Hulk> hulkList = new ArrayList<>();
+    List<Deadpool> deadList = new ArrayList<>();
 
-    Timer t, ts, capt, hulk;
+    Timer t, ts, capt, hulk, dead;
 
     public GamePanel(int w, int h) {
         this.setPreferredSize(new Dimension(w, h));
@@ -38,6 +39,8 @@ public class GamePanel extends JPanel implements MouseListener {
 
         initialize();
         getBkgd();
+
+        allChars.add(starkTower);
 
         ts = new Timer(1000, new ActionListener() {
             @Override
@@ -48,40 +51,52 @@ public class GamePanel extends JPanel implements MouseListener {
         });
         ts.start();
 
-        capt = new Timer(5000, new ActionListener() {
+        capt = new Timer(10000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CAmerica ca = new CAmerica(100, panelWidth, false, false, false);
-                ca.setPrice(15);
+                ca.setPrice(0);
                 ca.setWeapon("shield", 4);
                 captList.add(ca);
                 allChars.add(ca);
             }
         });
 
-        hulk = new Timer(10000, new ActionListener() {
+        hulk = new Timer(18000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Hulk h = new Hulk(105, panelWidth, false, false, false);
-                h.setPrice(15);
-                h.setWeapon("shield", 6);
+                h.setPrice(0);
+                h.setWeapon("strength", 6);
                 //next one does 8
                 hulkList.add(h);
                 allChars.add(h);
             }
         });
 
-        t = new Timer(30, new ActionListener() {
+        dead = new Timer(23000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Deadpool h = new Deadpool(110, panelWidth, false, false, false);
+                h.setPrice(0);
+                h.setWeapon("wits", 8);
+                //next one does 8
+                deadList.add(h);
+                allChars.add(h);
+            }
+        });
+
+        t = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();
             }
         });
 
-        // cue to select difficulty
         t.start();
-        capt.start();
-        hulk.start();
+//        capt.start();
+//        hulk.start();
+//        dead.start();
     }
 
     public void getInfo(GameObject o) {
@@ -130,7 +145,6 @@ public class GamePanel extends JPanel implements MouseListener {
     }
 
     public void getBkgd() {
-        // different depending on which evolution
         URL url = Jigglypuff.class.getResource("Images/prehistoric.png");
         URL url2 = Jigglypuff.class.getResource("Images/gold.png");
         try {
@@ -141,6 +155,8 @@ public class GamePanel extends JPanel implements MouseListener {
         }
     }
 
+    Turret starkTower = new Turret(1000);
+
     public void paintComponent(Graphics g) {
         panelWidth = this.getWidth();
         g.drawImage(bkgd, 0, 0, 1500, 800, null);
@@ -149,13 +165,11 @@ public class GamePanel extends JPanel implements MouseListener {
         //currency
         g.drawImage(gold, 10, 10, 25, 25, null);
         g.drawString(Integer.toString(goldCount), 35, 28);
+        starkTower.draw(g);
 
-
-        //drawing menus
         g.fillRect(panelWidth - 300, 0, 300, 100); // main menu area
 
         //can't use the fast loops because concurrent modification exception :(
-
         for (int i = 0; i < jigglypuffList.size(); i++) {
             Jigglypuff j = jigglypuffList.get(i);
             if (j.getHealth() <= 0) {
@@ -190,6 +204,8 @@ public class GamePanel extends JPanel implements MouseListener {
             CAmerica c = captList.get(i);
             if (c.getHealth() <= 0) {
                 captList.remove(c);
+                //gain gold for killing CPU units
+                goldCount+=30;
             } else {
                 c.setPanelWidth(panelWidth);
                 c.draw(g);
@@ -200,6 +216,20 @@ public class GamePanel extends JPanel implements MouseListener {
             Hulk h = hulkList.get(i);
             if (h.getHealth() <= 0) {
                 hulkList.remove(h);
+                //gain gold for killing CPU units
+                goldCount+=50;
+            } else {
+                h.setPanelWidth(panelWidth);
+                h.draw(g);
+            }
+        }
+
+        for (int i = 0; i < deadList.size(); i++) {
+            Deadpool h = deadList.get(i);
+            if (h.getHealth() <= 0) {
+                deadList.remove(h);
+                //gain gold for killing CPU units
+                goldCount+=70;
             } else {
                 h.setPanelWidth(panelWidth);
                 h.draw(g);
@@ -251,22 +281,20 @@ public class GamePanel extends JPanel implements MouseListener {
 //                        }
 //                    }
                     if (f.getBounds().intersects(s.getBounds())) {
-                        if(f.facingRight == s.facingRight){
-                            s.setIntersecting(true);
-                        }
-                        else if(f.facingRight!=s.facingRight){
-                            wentToAtk = true;
-                            f.setIntersectingAtk(true);
-                            s.setIntersectingAtk(true);
-                            f.attack(s);
-                            s.attack(f);
+                        if(f.bounds.intersects(s.bounds) && (f.facingRight != s.facingRight)){
+                            if(f.isTurr()){
+                                s.setIntersectingAtk(true);
+                                s.attack(f);
+                            }
+                            else {
+                                f.setIntersectingAtk(true);
+                                s.setIntersectingAtk(true);
+                                f.attack(s);
+                                s.attack(f);
+                            }
                         }
                         else{
-                            if(wentToAtk){
-                                s.setIntersectingAtk(false);
-                                f.setIntersectingAtk(false);
-                            }
-                            s.setIntersecting(false);
+                            f.setIntersectingAtk(false);
                         }
                     }
 //                        if (s.facingRight == f.facingRight) {

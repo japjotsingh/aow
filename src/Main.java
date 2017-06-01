@@ -10,7 +10,7 @@ public class Main {
 
     //hello
 
-    int w = 500;
+    int w = 1500;
     int h = 800;
 
     public static void main(String[] args){

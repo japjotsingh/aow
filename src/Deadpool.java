@@ -7,11 +7,11 @@ import javax.swing.Timer;
 /**
  * Created by home on 5/9/17.
  */
-public class Hulk extends GameObject {
+public class Deadpool extends GameObject {
 
     Timer t;
 
-    public Hulk(int h, int p, boolean idleSta, boolean isButton, boolean facingRight){
+    public Deadpool(int h, int p, boolean idleSta, boolean isButton, boolean facingRight){
 
         this.facingRight = facingRight;
         panelWidth = p;
@@ -25,24 +25,24 @@ public class Hulk extends GameObject {
         this.isButton = isButton;
 
         //attack Animation created
-        this.attack= new BufferedImage[10];
-        for (int i = 0; i < 10; i++) {
-            attack[i] = Sprite.getSprite(i, "hatk", "hatk.txt");
+        this.attack= new BufferedImage[7];
+        for (int i = 0; i < 7; i++) {
+            attack[i] = Sprite.getSprite(i, "datk", "datk.txt");
         }
         attackAnimation = new Animation(attack, frameDelay+12);
 
         //walk Animation created
-        walk = new BufferedImage[6];
-        for (int i = 0; i < 6; i++) {
-            walk[i] = Sprite.getSprite(i, "hwalk", "hwalk.txt");
+        walk = new BufferedImage[9];
+        for (int i = 0; i < 9; i++) {
+            walk[i] = Sprite.getSprite(i, "dwalk", "dwalk.txt");
         }
-        walkAnimation = new Animation(walk, frameDelay);
+        walkAnimation = new Animation(walk, frameDelay+2);
 
 
         //idle Animation created
-        this.idle = new BufferedImage[4];
-        for (int i = 0; i < 4; i++) {
-            this.idle[i] = Sprite.getSprite(i, "hidle", "hidle.txt");
+        this.idle = new BufferedImage[6];
+        for (int i = 0; i < 6; i++) {
+            this.idle[i] = Sprite.getSprite(i, "didle", "didle.txt");
         }
         idleAnimation = new Animation(idle, frameDelay+20);
 
