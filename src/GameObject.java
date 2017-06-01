@@ -7,15 +7,17 @@ import java.awt.image.BufferedImage;
 /**
  * Created by home on 5/5/17.
  */
-public abstract class GameObject{
+public abstract class GameObject {
 
     // hit box size
     protected Rectangle2D bounds = new Rectangle2D.Double();
 
     protected boolean facingRight = true;
 
-    protected int myX = 0;
+    protected int myX = 100;
     protected int myY = 651;
+
+    protected boolean intersectingAtk = false;
 
     protected int unitLocX;
     protected int unitLocY;
@@ -37,19 +39,23 @@ public abstract class GameObject{
     protected Animation attackAnimation;
     protected Animation idleAnimation;
 
-    public void setIntersecting(boolean b){
+    public void setIntersecting(boolean b) {
         intersecting = b;
     }
 
-    public boolean getIntersection(){
+    public void setIntersectingAtk(boolean b) {
+        intersectingAtk = b;
+    }
+
+    public boolean getIntersection() {
         return intersecting;
     }
 
-    public boolean isButton(){
+    public boolean isButton() {
         return this.isButton;
     }
 
-    public void setPanelWidth(int p){
+    public void setPanelWidth(int p) {
         panelWidth = p;
     }
 
@@ -85,11 +91,11 @@ public abstract class GameObject{
         return health;
     }
 
-    public boolean interesecting(int x, int y){
-        return bounds.intersects(x,y,1,1);
+    public boolean interesecting(int x, int y) {
+        return bounds.intersects(x, y, 1, 1);
     }
 
-    public boolean collision(GameObject o){
+    public boolean collision(GameObject o) {
         return bounds.intersects(o.getBounds());
     }
 
@@ -97,47 +103,53 @@ public abstract class GameObject{
         o.loseHealth(weapon.getDamage());
     }
 
-    public void walk(){
-        myX+=3;
+    public void walk() {
+        myX += 3;
     }
 
-    public Rectangle2D getBounds(){
+    public Rectangle2D getBounds() {
         return bounds;
     }
 
-    public int myX(){
+    public int myX() {
         return myX;
     }
 
-    public void draw(Graphics g){
+    public void draw(Graphics g) {
 
-        if(isButton){
+        if (isButton) {
             // selection button
-            g.drawImage(idleAnimation.getSprite(), panelWidth-unitLocX, unitLocY, 30,30, null);
-            bounds.setRect(panelWidth-300, 10, 30,30);
-        }
-
-        else{
+            g.drawImage(idleAnimation.getSprite(), panelWidth - unitLocX, unitLocY, 30, 30, null);
+            bounds.setRect(panelWidth - 300, 10, 30, 30);
+        } else {
             //add && condition that if the one infront is facing right
-            if(intersecting){
-                g.drawImage(idleAnimation.getSprite(), myX, myY, 50,50, null);
-                bounds.setRect(myX,myY,50,50);
+            //if intersecting and front side is facing left(AI) then do attack animation
+            if (intersectingAtk) {
+                g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
+                g.drawRect(myX, myY, 50,50);
+                bounds.setRect(myX, myY, 50, 50);
+            }
+            else if (intersecting) {
+                g.drawImage(idleAnimation.getSprite(), myX, myY, 50, 50, null);
+                g.drawRect(myX, myY, 50,50);
+                bounds.setRect(myX, myY, 50, 50);
             }
             //walk
-            else if(!intersecting && myX+80<panelWidth){
-                g.drawImage(walkAnimation.getSprite(),myX,myY,50,50,null);
+            else if (!intersecting && myX + 80 < panelWidth) {
+                g.drawImage(walkAnimation.getSprite(), myX, myY, 50, 50, null);
                 walk();
-                bounds.setRect(myX,myY,50,50);
+                g.drawRect(myX, myY, 50,50);
+                bounds.setRect(myX, myY, 50, 50);
             }
-            //if at the end freeze
-            else if(myX+80>=panelWidth){
-                g.drawImage(idleAnimation.getSprite(), myX, myY, 50,50, null);
-                bounds.setRect(myX,myY,50,50);
+            //if at the end attack
+            else if (myX + 80 >= panelWidth) {
+                g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
+                g.drawRect(myX, myY, 50,50);
+                bounds.setRect(myX, myY, 50, 50);
             }
-            //if intersecting and front side is facing left(AI) then do attack animation
 
             //catch some exception
-            else{
+            else {
                 System.out.println("##$% -- EXCEPTION!!!");
             }
         }

@@ -51,22 +51,23 @@ public class Jigglypuff extends GameObject {
                 if(isButton){
                     idleAnimation.update();
                 }
-                else if(intersecting || myX+80>=panelWidth){
+                else if(intersectingAtk){
+                    attackAnimation.update();
+                }
+                else if(intersecting){
                     idleAnimation.update();
                 }
                 //if not intersecting anythign and not at the end walk
                 else if(!intersecting && myX+80<panelWidth){
                     walkAnimation.update();
                 }
-                else if(myX+80>panelWidth){
-                    System.out.println("at the end");
+                else if(myX+80>=panelWidth){
+                    attackAnimation.update();
                 }
-
                 //if intersecting && facing left attack
 
                 else{
-//                    System.out.println("##$% -- Animation Update Exception!");
-                    attackAnimation.update();
+                    System.out.println("##$% -- Animation Update Exception!");
                 }
             }
         });

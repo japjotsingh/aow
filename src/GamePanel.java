@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements MouseListener {
 
     List<Jigglypuff> jigglypuffList = new ArrayList<>();
     List<Kirby> kirbyList = new ArrayList<>();
+    List<CAmerica> captList = new ArrayList<>();
 
     Timer t, ts;
     JButton unit, back, jp, kb;
@@ -99,7 +100,12 @@ public class GamePanel extends JPanel implements MouseListener {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainScreen = true;
+//                mainScreen = true;
+                CAmerica ma = new CAmerica(20, panelWidth, false, false, false);
+                ma.setPrice(15);
+                ma.setWeapon("shield", 1);
+                captList.add(ma);
+                allChars.add(ma);
             }
         });
 
@@ -126,9 +132,9 @@ public class GamePanel extends JPanel implements MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Kirby ma = new Kirby(10, panelWidth, false, false, true);
+                Kirby ma = new Kirby(20, panelWidth, false, false, true);
                 ma.setPrice(15);
-                ma.setWeapon("hands", 5);
+                ma.setWeapon("hands", 2);
                 //sleep and update status
                 if (buyUnit(ma.getPrice())) {
                     kirbyList.add(1, ma);
@@ -219,23 +225,65 @@ public class GamePanel extends JPanel implements MouseListener {
 //            vehicle.setVisible(true);
 //        }
 
-        for (Jigglypuff m : this.jigglypuffList) {
-            m.setPanelWidth(panelWidth);
-            m.draw(g);
+        //can't use the fast loops because concurrent modification exception :(
+
+        for (int i = 0; i < jigglypuffList.size(); i++) {
+            Jigglypuff j = jigglypuffList.get(i);
+            if (j.getHealth() <= 0) {
+                jigglypuffList.remove(j);
+            } else {
+                j.setPanelWidth(panelWidth);
+                j.draw(g);
+            }
         }
 
-        for (Kirby k : this.kirbyList) {
-            k.setPanelWidth(panelWidth);
-            k.draw(g);
+        for (int i = 0; i < kirbyList.size(); i++) {
+            Kirby k = kirbyList.get(i);
+            if (k.getHealth() <= 0) {
+                kirbyList.remove(k);
+            } else {
+                k.setPanelWidth(panelWidth);
+                k.draw(g);
+            }
+        }
+
+        for (int i = 0; i < captList.size(); i++) {
+            CAmerica c = captList.get(i);
+            if (c.getHealth() <= 0) {
+                captList.remove(c);
+            } else {
+                c.setPanelWidth(panelWidth);
+                c.draw(g);
+            }
         }
 
         for (int i = 0; i < allChars.size(); i++) {
+            GameObject o = allChars.get(i);
+            if (o.getHealth() <= 0) {
+                allChars.remove(o);
+            }
+        }
+
+        //if first captain america and jiggly collide and then send another jiggly there is a problem
+        for (int i = 0; i < allChars.size(); i++) {
             for (int j = i + 1; j < allChars.size(); j++) {
                 if (j != i) {
-                    if (allChars.get(i).getBounds().intersects(allChars.get(j).getBounds())) {
-                        allChars.get(j).setIntersecting(true);
+                    GameObject f = allChars.get(i);
+                    GameObject s = allChars.get(j);
+
+                    if (f.getBounds().intersects(s.getBounds())) {
+                        if (s.facingRight == f.facingRight) {
+                            s.setIntersecting(true);
+                        } else {
+                            f.setIntersectingAtk(true);
+                            s.setIntersectingAtk(true);
+                            f.attack(s);
+                            s.attack(f);
+                        }
                     } else {
-                        allChars.get(j).setIntersecting(false);
+                        s.setIntersecting(false);
+                        f.setIntersectingAtk(false);
+                        s.setIntersectingAtk(false);
                     }
                 }
             }
