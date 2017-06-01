@@ -17,7 +17,7 @@ public abstract class GameObject {
 
     protected boolean facingRight = true;
 
-    protected int myX = 0;
+    protected int myX = 240;
     protected int myY = 665;
 
     protected boolean intersectingAtk = false;
@@ -134,25 +134,25 @@ public abstract class GameObject {
             //if intersecting and front side is facing left(AI) then do attack animation
             if (intersectingAtk) {
                 g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
-                g.drawRect(myX, myY, 50,50);
+//                g.drawRect(myX, myY, 50,50);
                 bounds.setRect(myX, myY, 50, 50);
             }
             else if (intersecting) {
                 g.drawImage(idleAnimation.getSprite(), myX, myY, 50, 50, null);
-                g.drawRect(myX, myY, 50,50);
+//                g.drawRect(myX, myY, 50,50);
                 bounds.setRect(myX, myY, 50, 50);
             }
             //walk
             else if (!intersecting && myX + 80 < panelWidth) {
                 g.drawImage(walkAnimation.getSprite(), myX, myY, 50, 50, null);
                 walk();
-                g.drawRect(myX, myY, 50,50);
+//                g.drawRect(myX, myY, 50,50);
                 bounds.setRect(myX, myY, 50, 50);
             }
             //if at the end attack
             else if (myX + 80 >= panelWidth) {
                 g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
-                g.drawRect(myX, myY, 50,50);
+//                g.drawRect(myX, myY, 50,50);
                 bounds.setRect(myX, myY, 50, 50);
             }
 

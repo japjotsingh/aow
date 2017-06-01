@@ -16,7 +16,7 @@ public class Hulk extends GameObject {
         this.facingRight = facingRight;
         panelWidth = p;
 
-        this.myX = panelWidth;
+        this.myX = 1330;
 
         //where it is drawn
         bounds.setRect(myX,651,50,50);
@@ -96,7 +96,7 @@ public class Hulk extends GameObject {
             //add && condition that if the one infront is facing right
             if (intersectingAtk) {
                 g.drawImage(attackAnimation.getSprite(), myX, myY, 50, 50, null);
-                g.drawRect(myX, myY, 30,30);
+//                g.drawRect(myX, myY, 30,30);
                 bounds.setRect(myX, myY, 50, 50);
             }
             else if(intersecting){
@@ -108,13 +108,13 @@ public class Hulk extends GameObject {
             else if(!intersecting && myX-80>0){
                 g.drawImage(walkAnimation.getSprite(),myX,myY,50,50,null);
                 walk();
-                g.drawRect(myX, myY, 30,30);
+//                g.drawRect(myX, myY, 30,30);
                 bounds.setRect(myX,myY,50,50);
             }
             //if at the end attack
             else if(myX-80<=0){
                 g.drawImage(attackAnimation.getSprite(), myX, myY, 50,50, null);
-                g.drawRect(myX, myY, 30,30);
+//                g.drawRect(myX, myY, 30,30);
                 bounds.setRect(myX,myY,50,50);
             }
             //if intersecting and front side is facing left(AI) then do attack animation

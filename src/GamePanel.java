@@ -13,6 +13,10 @@ import java.util.Set;
  * Created by home on 5/5/17.
  */
 public class GamePanel extends JPanel implements MouseListener {
+
+    //fix the collision
+    //and the damage is only done once every 8 animations not once every tick?
+
     Image bkgd, gold;
     Graphics g;
     private int panelWidth;
@@ -41,6 +45,7 @@ public class GamePanel extends JPanel implements MouseListener {
         getBkgd();
 
         allChars.add(starkTower);
+        allChars.add(nintendoTower);
 
         ts = new Timer(1000, new ActionListener() {
             @Override
@@ -51,7 +56,7 @@ public class GamePanel extends JPanel implements MouseListener {
         });
         ts.start();
 
-        capt = new Timer(10000, new ActionListener() {
+        capt = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CAmerica ca = new CAmerica(100, panelWidth, false, false, false);
@@ -62,7 +67,7 @@ public class GamePanel extends JPanel implements MouseListener {
             }
         });
 
-        hulk = new Timer(18000, new ActionListener() {
+        hulk = new Timer(10000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Hulk h = new Hulk(105, panelWidth, false, false, false);
@@ -74,7 +79,7 @@ public class GamePanel extends JPanel implements MouseListener {
             }
         });
 
-        dead = new Timer(23000, new ActionListener() {
+        dead = new Timer(15000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Deadpool h = new Deadpool(110, panelWidth, false, false, false);
@@ -94,9 +99,9 @@ public class GamePanel extends JPanel implements MouseListener {
         });
 
         t.start();
-//        capt.start();
-//        hulk.start();
-//        dead.start();
+        capt.start();
+        hulk.start();
+        dead.start();
     }
 
     public void getInfo(GameObject o) {
@@ -156,18 +161,35 @@ public class GamePanel extends JPanel implements MouseListener {
     }
 
     Turret starkTower = new Turret(1000);
+    Nintendotower nintendoTower = new Nintendotower(1000);
 
     public void paintComponent(Graphics g) {
         panelWidth = this.getWidth();
         g.drawImage(bkgd, 0, 0, 1500, 800, null);
 
 
+        g.fillRect(panelWidth - 300, 0, 300, 100); // main menu area
+
         //currency
+        g.setColor(Color.BLACK);
         g.drawImage(gold, 10, 10, 25, 25, null);
         g.drawString(Integer.toString(goldCount), 35, 28);
-        starkTower.draw(g);
 
-        g.fillRect(panelWidth - 300, 0, 300, 100); // main menu area
+
+        g.setColor(Color.ORANGE);
+        g.drawImage(gold, panelWidth - 290, 72, 15, 15, null);
+        g.drawImage(gold, panelWidth - 190, 72, 15, 15, null);
+        g.drawImage(gold, panelWidth - 90, 72, 15, 15, null);
+
+        g.drawString("= " + Integer.toString(15), panelWidth - 270, 85);
+        g.drawString("= " + Integer.toString(25), panelWidth - 170, 85);
+        g.drawString("= " + Integer.toString(35), panelWidth - 70, 85);
+
+        g.setColor(Color.RED);
+
+
+        starkTower.draw(g);
+        nintendoTower.draw(g);
 
         //can't use the fast loops because concurrent modification exception :(
         for (int i = 0; i < jigglypuffList.size(); i++) {
@@ -205,7 +227,7 @@ public class GamePanel extends JPanel implements MouseListener {
             if (c.getHealth() <= 0) {
                 captList.remove(c);
                 //gain gold for killing CPU units
-                goldCount+=30;
+                goldCount += 30;
             } else {
                 c.setPanelWidth(panelWidth);
                 c.draw(g);
@@ -217,7 +239,7 @@ public class GamePanel extends JPanel implements MouseListener {
             if (h.getHealth() <= 0) {
                 hulkList.remove(h);
                 //gain gold for killing CPU units
-                goldCount+=50;
+                goldCount += 50;
             } else {
                 h.setPanelWidth(panelWidth);
                 h.draw(g);
@@ -229,7 +251,7 @@ public class GamePanel extends JPanel implements MouseListener {
             if (h.getHealth() <= 0) {
                 deadList.remove(h);
                 //gain gold for killing CPU units
-                goldCount+=70;
+                goldCount += 70;
             } else {
                 h.setPanelWidth(panelWidth);
                 h.draw(g);
@@ -248,7 +270,6 @@ public class GamePanel extends JPanel implements MouseListener {
                 if (j != i) {
                     GameObject f = allChars.get(i);
                     GameObject s = allChars.get(j);
-
 
 
 //                    if (f.getBounds().intersects(s.getBounds()) && (f.facingRight == s.facingRight)) {
@@ -281,19 +302,17 @@ public class GamePanel extends JPanel implements MouseListener {
 //                        }
 //                    }
                     if (f.getBounds().intersects(s.getBounds())) {
-                        if(f.bounds.intersects(s.bounds) && (f.facingRight != s.facingRight)){
-                            if(f.isTurr()){
+                        if (f.bounds.intersects(s.bounds) && (f.facingRight != s.facingRight)) {
+                            if (f.isTurr()) {
                                 s.setIntersectingAtk(true);
                                 s.attack(f);
-                            }
-                            else {
+                            } else {
                                 f.setIntersectingAtk(true);
                                 s.setIntersectingAtk(true);
                                 f.attack(s);
                                 s.attack(f);
                             }
-                        }
-                        else{
+                        } else {
                             f.setIntersectingAtk(false);
                         }
                     }
@@ -313,28 +332,28 @@ public class GamePanel extends JPanel implements MouseListener {
                 }
             }
         }
-        if(allChars.size() == 1){
+        if (allChars.size() == 1) {
             allChars.get(0).setIntersectingAtk(false);
         }
     }
 
 
     public void mouseClicked(MouseEvent e) {
-//        System.out.println(e.getX() + " " + e.getY());
+        System.out.println(e.getX() + " " + e.getY());
         Rectangle2D mouse = new Rectangle2D.Double();
         mouse.setRect(e.getX(), e.getY(), 1, 1);
 
-        if(mouse.intersects(idleJig.getBounds())){
+        if (mouse.intersects(idleJig.getBounds())) {
             Jigglypuff ma = new Jigglypuff(100, panelWidth, false, false, true);
             ma.setPrice(15);
             ma.setWeapon("hands", 1);
-            if(buyUnit(ma.getPrice())) {
+            if (buyUnit(ma.getPrice())) {
                 jigglypuffList.add(1, ma);
                 allChars.add(ma);
             }
         }
 
-        if(mouse.intersects(idleKirby.getBounds())){
+        if (mouse.intersects(idleKirby.getBounds())) {
             Kirby ma = new Kirby(110, panelWidth, false, false, true);
             ma.setPrice(25);
             ma.setWeapon("hammer", 3);
@@ -344,8 +363,8 @@ public class GamePanel extends JPanel implements MouseListener {
             }
         }
 
-        if(mouse.intersects(idleMeta.getBounds())){
-            Metaknight m = new Metaknight(120,panelWidth,false,false,true);
+        if (mouse.intersects(idleMeta.getBounds())) {
+            Metaknight m = new Metaknight(120, panelWidth, false, false, true);
             m.setPrice(35);
             m.setWeapon("blades", 5);
             if (buyUnit(m.getPrice())) {
