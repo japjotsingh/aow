@@ -14,8 +14,8 @@ public abstract class GameObject {
 
     protected boolean facingRight = true;
 
-    protected int myX = 100;
-    protected int myY = 651;
+    protected int myX = 0;
+    protected int myY = 665;
 
     protected boolean intersectingAtk = false;
 
@@ -47,13 +47,13 @@ public abstract class GameObject {
         intersectingAtk = b;
     }
 
-    public boolean getIntersection() {
-        return intersecting;
-    }
+//    public boolean getIntersection() {
+//        return intersecting;
+//    }
 
-    public boolean isButton() {
-        return this.isButton;
-    }
+//    public boolean isButton() {
+//        return this.isButton;
+//    }
 
     public void setPanelWidth(int p) {
         panelWidth = p;
@@ -91,13 +91,13 @@ public abstract class GameObject {
         return health;
     }
 
-    public boolean interesecting(int x, int y) {
-        return bounds.intersects(x, y, 1, 1);
-    }
-
-    public boolean collision(GameObject o) {
-        return bounds.intersects(o.getBounds());
-    }
+//    public boolean interesecting(int x, int y) {
+//        return bounds.intersects(x, y, 1, 1);
+//    }
+//
+//    public boolean collision(GameObject o) {
+//        return bounds.intersects(o.getBounds());
+//    }
 
     public void attack(GameObject o) {
         o.loseHealth(weapon.getDamage());
@@ -119,8 +119,9 @@ public abstract class GameObject {
 
         if (isButton) {
             // selection button
-            g.drawImage(idleAnimation.getSprite(), panelWidth - unitLocX, unitLocY, 30, 30, null);
-            bounds.setRect(panelWidth - 300, 10, 30, 30);
+            g.drawImage(idleAnimation.getSprite(), panelWidth - unitLocX, unitLocY, 50, 50, null);
+            bounds.setRect(panelWidth - unitLocX, unitLocY, 50, 50);
+
         } else {
             //add && condition that if the one infront is facing right
             //if intersecting and front side is facing left(AI) then do attack animation

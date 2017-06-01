@@ -23,7 +23,7 @@ public class Main {
     }
 
     private void start() throws Exception{
-        JFrame frame = new JFrame("Age of War");
+        JFrame frame = new JFrame("Age of War: Nintendo vs Marvel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new GamePanel(w, h), BorderLayout.CENTER);
         frame.pack();

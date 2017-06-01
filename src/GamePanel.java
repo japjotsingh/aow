@@ -16,6 +16,7 @@ public class GamePanel extends JPanel implements MouseListener {
     Image bkgd, gold;
     Graphics g;
     private int panelWidth;
+    protected boolean wentToAtk;
 
     // gold you start with
     protected int goldCount = 100;
@@ -24,11 +25,11 @@ public class GamePanel extends JPanel implements MouseListener {
 
     List<Jigglypuff> jigglypuffList = new ArrayList<>();
     List<Kirby> kirbyList = new ArrayList<>();
+    List<Metaknight> metaList = new ArrayList<>();
+
     List<CAmerica> captList = new ArrayList<>();
 
-    Timer t, ts;
-    JButton unit, back, jp, kb;
-    boolean mainScreen = true;
+    Timer t, ts, capt, hulk;
 
     public GamePanel(int w, int h) {
         this.setPreferredSize(new Dimension(w, h));
@@ -46,6 +47,17 @@ public class GamePanel extends JPanel implements MouseListener {
         });
         ts.start();
 
+        capt = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CAmerica ca = new CAmerica(100, panelWidth, false, false, false);
+                ca.setPrice(15);
+                ca.setWeapon("shield", 1);
+                captList.add(ca);
+                allChars.add(ca);
+            }
+        });
+
         t = new Timer(30, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,6 +67,7 @@ public class GamePanel extends JPanel implements MouseListener {
 
         // cue to select difficulty
         t.start();
+        capt.start();
     }
 
     public void getInfo(GameObject o) {
@@ -83,92 +96,23 @@ public class GamePanel extends JPanel implements MouseListener {
         initButtons();
     }
 
+    //clickable units
+    Jigglypuff idleJig;
+    Kirby idleKirby;
+    Metaknight idleMeta;
+
     public void initButtons() {
         setLayout(null);
 
         //clickable units
-        Jigglypuff idleOne = new Jigglypuff(10, panelWidth, true, true, false);
-        jigglypuffList.add(idleOne);
+        idleJig = new Jigglypuff(10, panelWidth, true, true, false);
+        jigglypuffList.add(idleJig);
 
-        Kirby idleKirby = new Kirby(10, panelWidth, true, true, false);
+        idleKirby = new Kirby(10, panelWidth, true, true, false);
         kirbyList.add(idleKirby);
 
-        back = new JButton("back");
-        back.setBounds(500, 100, 70, 20);
-        add(back);
-        back.setVisible(true);
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-//                mainScreen = true;
-                CAmerica ma = new CAmerica(20, panelWidth, false, false, false);
-                ma.setPrice(15);
-                ma.setWeapon("shield", 1);
-                captList.add(ma);
-                allChars.add(ma);
-            }
-        });
-
-        jp = new JButton("jiggles");
-        jp.setBounds(500, 100, 70, 20);
-        add(jp);
-        jp.setVisible(true);
-        jp.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Jigglypuff ma = new Jigglypuff(10, panelWidth, false, false, true);
-                ma.setPrice(15);
-                ma.setWeapon("hands", 5);
-                jigglypuffList.add(1, ma);
-                allChars.add(ma);
-            }
-        });
-
-        kb = new JButton("kirby");
-        kb.setBounds(500, 100, 70, 20);
-        add(kb);
-        kb.setVisible(true);
-        kb.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                Kirby ma = new Kirby(20, panelWidth, false, false, true);
-                ma.setPrice(15);
-                ma.setWeapon("hands", 2);
-                //sleep and update status
-                if (buyUnit(ma.getPrice())) {
-                    kirbyList.add(1, ma);
-                    allChars.add(ma);
-                }
-
-            }
-        });
-
-//        // in unit menu
-//        jigglypuff = new JButton("Jigglypuff");
-//        jigglypuff.setBounds(500, 50,70, 20);
-//        add(jigglypuff);
-//        jigglypuff.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e){
-//                //opens the unit menu
-//                //open panel to buy units
-//                //System.out.println("open units panel");
-//
-//                // Make a new unit!
-//                //hashmap, with type and evoltion get info
-//                // get the name from the radio that is selected;
-
-//        unit = new JButton("UnitMenu");
-//        unit.setBounds(500,50, 70, 20);
-//        add(unit);
-//        unit.setVisible(true);
-//        unit.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                mainScreen = false;
-//            }
-//        });
+        idleMeta = new Metaknight(10, panelWidth, true, true, false);
+        metaList.add(idleMeta);
     }
 
     public void getBkgd() {
@@ -188,42 +132,13 @@ public class GamePanel extends JPanel implements MouseListener {
         g.drawImage(bkgd, 0, 0, 1500, 800, null);
 
 
-        //currenct
+        //currency
         g.drawImage(gold, 10, 10, 25, 25, null);
         g.drawString(Integer.toString(goldCount), 35, 28);
 
 
         //drawing menus
         g.fillRect(panelWidth - 300, 0, 300, 100); // main menu area
-        g.fillRect(panelWidth - 200, 100, 200, 30); // evolution special
-        g.fillRect(0, this.getHeight() - 100, this.getWidth(), 100);// bottom walking platformer
-        back.setLocation(panelWidth - 300, 100);
-
-        // a boolean switch for if we are in the unit menu or main menu, boolean switches with back button
-
-        jp.setLocation(panelWidth - 300, 50);
-        kb.setLocation(panelWidth - 200, 50);
-
-//        if(mainScreen) {
-//            jigglypuff.setVisible(false);
-//            archer.setVisible(false);
-//            vehicle.setVisible(false);
-//
-//            unit.setLocation(panelWidth - 300, 30);
-//            unit.setVisible(true);
-//        }
-
-//        else{
-//            unit.setVisible(false);
-//
-//            jigglypuff.setLocation(panelWidth-300, 30);
-//            archer.setLocation(panelWidth-200, 30);
-//            vehicle.setLocation(panelWidth-100, 30);
-//
-//            jigglypuff.setVisible(true);
-//            archer.setVisible(true);
-//            vehicle.setVisible(true);
-//        }
 
         //can't use the fast loops because concurrent modification exception :(
 
@@ -264,35 +179,118 @@ public class GamePanel extends JPanel implements MouseListener {
             }
         }
 
-        //if first captain america and jiggly collide and then send another jiggly there is a problem
         for (int i = 0; i < allChars.size(); i++) {
             for (int j = i + 1; j < allChars.size(); j++) {
                 if (j != i) {
                     GameObject f = allChars.get(i);
                     GameObject s = allChars.get(j);
 
+
+
+//                    if (f.getBounds().intersects(s.getBounds()) && (f.facingRight == s.facingRight)) {
+//                        if (s.facingRight == true) {
+//                            if (f.getBounds().getX() < s.getBounds().getX()) {
+//                                f.setIntersecting(true);
+//                            } else {
+//                                s.setIntersecting(true);
+//                            }
+//                        }
+//
+//                        else if (s.facingRight == false) {
+//                            if (f.getBounds().getX() > s.getBounds().getX()) {
+//                                f.setIntersecting(true);
+//                            } else {
+//                                s.setIntersecting(true);
+//                            }
+//                        }
+//                    }
+//                    else if(f.getBounds().intersects(s.getBounds()) && (f.facingRight != s.facingRight)){
+//                        f.setIntersectingAtk(true);
+//                        s.setIntersectingAtk(true);
+//                        f.attack(s);
+//                        s.attack(f);
+//                    }
+//                    else{
+//                        for(GameObject o: allChars){
+//                            o.setIntersecting(false);
+//                            o.setIntersectingAtk(false);
+//                        }
+//                    }
                     if (f.getBounds().intersects(s.getBounds())) {
-                        if (s.facingRight == f.facingRight) {
+                        if(f.facingRight == s.facingRight){
                             s.setIntersecting(true);
-                        } else {
+                        }
+                        else if(f.facingRight!=s.facingRight){
+                            wentToAtk = true;
                             f.setIntersectingAtk(true);
                             s.setIntersectingAtk(true);
                             f.attack(s);
                             s.attack(f);
                         }
-                    } else {
-                        s.setIntersecting(false);
-                        f.setIntersectingAtk(false);
-                        s.setIntersectingAtk(false);
+                        else{
+                            if(wentToAtk){
+                                s.setIntersectingAtk(false);
+                                f.setIntersectingAtk(false);
+                            }
+                            s.setIntersecting(false);
+                        }
                     }
+//                        if (s.facingRight == f.facingRight) {
+//                            s.setIntersecting(true);
+//                        } else {
+//                            f.setIntersectingAtk(true);
+//                            s.setIntersectingAtk(true);
+//                            f.attack(s);
+//                            s.attack(f);
+//                        }
+//                    } else {
+//                        s.setIntersecting(false);
+//                        f.setIntersectingAtk(false);
+//                        s.setIntersectingAtk(false);
+//                    }
                 }
             }
+        }
+        if(allChars.size() == 1){
+            allChars.get(0).setIntersectingAtk(false);
         }
     }
 
 
     public void mouseClicked(MouseEvent e) {
-        System.out.println(e.getX() + " " + e.getY());
+//        System.out.println(e.getX() + " " + e.getY());
+        Rectangle2D mouse = new Rectangle2D.Double();
+        mouse.setRect(e.getX(), e.getY(), 1, 1);
+
+        if(mouse.intersects(idleJig.getBounds())){
+            Jigglypuff ma = new Jigglypuff(100, panelWidth, false, false, true);
+            ma.setPrice(15);
+            ma.setWeapon("hands", 3);
+            if(buyUnit(ma.getPrice())) {
+                jigglypuffList.add(1, ma);
+                allChars.add(ma);
+            }
+        }
+
+//        if(mouse.intersects(idleKirby.getBounds())){
+//            Kirby ma = new Kirby(110, panelWidth, false, false, true);
+//            ma.setPrice(25);
+//            ma.setWeapon("hammer", 5);
+//            if (buyUnit(ma.getPrice())) {
+//                kirbyList.add(1, ma);
+//                allChars.add(ma);
+//            }
+//        }
+
+        if(mouse.intersects(idleKirby.getBounds())){
+            Metaknight m = new Metaknight(120,panelWidth,false,false,true);
+            m.setPrice(35);
+            m.setWeapon("blades", 7);
+            if (buyUnit(m.getPrice())) {
+                metaList.add(1, m);
+                allChars.add(m);
+            }
+        }
     }
 
     public void mouseEntered(MouseEvent e) {

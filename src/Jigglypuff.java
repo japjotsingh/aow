@@ -14,7 +14,7 @@ public class Jigglypuff extends GameObject {
 
         this.facingRight = facingRight;
 
-        unitLocX = 300;
+        unitLocX = 290;
         unitLocY = 10;
 
         bounds.setRect(0,651,50,50);

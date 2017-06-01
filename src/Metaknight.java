@@ -6,15 +6,15 @@ import javax.swing.Timer;
 /**
  * Created by home on 5/9/17.
  */
-public class Kirby extends GameObject {
+public class Metaknight extends GameObject {
 
     Timer t;
 
-    public Kirby(int h, int p, boolean idleSta, boolean isButton, boolean facingRight) {
+    public Metaknight(int h, int p, boolean idleSta, boolean isButton, boolean facingRight) {
 
         this.facingRight = facingRight;
 
-        unitLocX = 190;
+        unitLocX = 90;
         unitLocY = 10;
 
         //where it is drawn
@@ -25,24 +25,24 @@ public class Kirby extends GameObject {
         this.isButton = isButton;
 
         //attack Animation created
-        this.attack = new BufferedImage[8];
-        for (int i = 0; i < 8; i++) {
-            attack[i] = Sprite.getSprite(i, "katk", "katk.txt");
+        this.attack = new BufferedImage[5];
+        for (int i = 0; i < 5; i++) {
+            attack[i] = Sprite.getSprite(i, "matk", "matk.txt");
         }
         attackAnimation = new Animation(attack, frameDelay + 5);
 
         //walk Animation created
-        walk = new BufferedImage[6];
-        for (int i = 0; i < 6; i++) {
-            walk[i] = Sprite.getSprite(i, "kwalk", "kwalk.txt");
+        walk = new BufferedImage[10];
+        for (int i = 0; i < 10; i++) {
+            walk[i] = Sprite.getSprite(i, "mwalk", "mwalk.txt");
         }
         walkAnimation = new Animation(walk, frameDelay);
 
 
         //idle Animation created
-        this.idle = new BufferedImage[2];
-        for (int i = 0; i < 2; i++) {
-            this.idle[i] = Sprite.getSprite(i, "kidle", "kidle.txt");
+        this.idle = new BufferedImage[4];
+        for (int i = 0; i < 4; i++) {
+            this.idle[i] = Sprite.getSprite(i, "midle", "midle.txt");
         }
         idleAnimation = new Animation(idle, frameDelay + 50);
 
